@@ -35,6 +35,7 @@ function kaveret_offer_default_page_manager_handlers() {
           'settings' => array(
             'type' => array(
               'offer' => 'offer',
+              'request' => 'request',
             ),
           ),
           'context' => 'argument_entity_id:node_1',

@@ -73,13 +73,6 @@ function kaveret_offer_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'offer' => 'offer',
   );
-  /* Filter criterion: Content: Type (field_type) */
-  $handler->display->display_options['filters']['field_type_value']['id'] = 'field_type_value';
-  $handler->display->display_options['filters']['field_type_value']['table'] = 'field_data_field_type';
-  $handler->display->display_options['filters']['field_type_value']['field'] = 'field_type_value';
-  $handler->display->display_options['filters']['field_type_value']['value'] = array(
-    'offer' => 'offer',
-  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');

@@ -16,26 +16,20 @@ function kaveret_offer_ctools_plugin_directory($module, $plugin) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter().
+ * Implements hook_form_alter().
+ *
+ * Alter the node form of request and offer.
  */
-function kaveret_offer_form_offer_node_form_alter(&$form, &$form_state) {
-  // Alter offer creation form.
+function kaveret_offer_form_alter(&$form, &$form_state, $form_id) {
+  if (!in_array($form_id, array('offer_node_form', 'request_node_form'))) {
+    return;
+  }
+
   $node = $form_state['node'];
   if (empty($node->nid)) {
     // Allow overriding the type.
-    $type = !empty($_GET['type']) && $_GET['type'] == 'request' ? 'request' : 'offer';
-
-    drupal_set_title($type == 'request' ? t('I would like to request') : t('I would like to offer'));
-
-    $form['field_type'][LANGUAGE_NONE]['#default_value'] = $type;
+    drupal_set_title($node->type == 'request' ? t('I would like to request') : t('I would like to offer'));
   }
-  // Alter offer edit form.
-  else {
-    $wrapper = entity_metadata_wrapper('node', $node);
-    drupal_set_title(t('Edit @type: @title', array('@type' => strtolower($wrapper->field_type->label()), '@title' => $node->title)));
-  }
-
-  hide($form['field_type']);
 
   // The expiry label is different on the node view because there we display a
   // specific date.
