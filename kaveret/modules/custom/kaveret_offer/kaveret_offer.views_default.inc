@@ -140,7 +140,6 @@ function kaveret_offer_views_default_views() {
     'offer' => 'offer',
     'request' => 'request',
   );
-  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
   $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
   $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
   $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
