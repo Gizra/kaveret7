@@ -140,6 +140,7 @@ function kaveret_set_variables() {
     // Update the menu router information.
     'menu_rebuild_needed' => TRUE,
     'jquery_update_jquery_version' =>  '1.8',
+    'page_manager_node_view_disabled' => FALSE,
   );
 
   foreach ($variables as $key => $value) {

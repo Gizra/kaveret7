@@ -7,6 +7,15 @@
 include_once 'kaveret_offer.features.inc';
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function kaveret_offer_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools') {
+    return 'plugins/' . $plugin;
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  */
 function kaveret_offer_form_offer_node_form_alter(&$form, &$form_state) {
