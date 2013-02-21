@@ -215,9 +215,9 @@ function kaveret_offer_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
-          'module' => 'list',
+          'module' => 'kaveret_offer',
           'settings' => array(),
-          'type' => 'list_default',
+          'type' => 'expiry_date',
           'weight' => '1',
         ),
         'teaser' => array(
@@ -229,7 +229,7 @@ function kaveret_offer_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_expiry_after',
-      'label' => 'Delete after',
+      'label' => 'Expiring',
       'required' => 0,
       'settings' => array(
         'user_register_form' => FALSE,
@@ -462,7 +462,7 @@ function kaveret_offer_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Category');
-  t('Delete after');
+  t('Expiring');
   t('Image');
   t('Tags');
   t('Tell your story');

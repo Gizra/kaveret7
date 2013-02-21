@@ -220,31 +220,6 @@ function bootstrap_preprocess_node(&$variables) {
 }
 
 /**
- * Preprocess field.
- *
- * Reformat the expiry-after field to display the expiry date.
- */
-function bootstrap_preprocess_field(&$variables) {
-  if ($variables['element']['#field_name'] != 'field_expiry_after') {
-    return;
-  }
-
-  if (empty($variables['element']['#items'][0]['value'])) {
-    return;
-  }
-
-  $variables['label'] = t('Expiring');
-
-  // Calculate the expiry date by applying the expiry_after value (E.g.
-  // "+1 day") to the time the node was updated.
-  $expiry_date = strtotime($variables['element']['#items'][0]['value'], $variables['element']['#object']->changed);
-  // Format the date.
-  $expiry_date = date(variable_get('date_format_short'), $expiry_date);
-
-  $variables['items'][0]['#markup'] = $expiry_date;
-}
-
-/**
  * Preprocess variables for region.tpl.php
  *
  * @see region.tpl.php
