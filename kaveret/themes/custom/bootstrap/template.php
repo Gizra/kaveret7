@@ -229,18 +229,17 @@ function bootstrap_preprocess_field(&$variables) {
     return;
   }
 
+  if (empty($variables['element']['#items'][0]['value'])) {
+    return;
+  }
+
   $variables['label'] = t('Expiring');
 
-  if (!empty($variables['element']['#items'][0]['value'])) {
-    // Calculate the expiry date by applying the expiry_after value (E.g.
-    // "+1 day") to the time the node was updated.
-    $expiry_date = strtotime($variables['element']['#items'][0]['value'], $variables['element']['#object']->changed);
-    // Format the date.
-    $expiry_date = date(variable_get('date_format_short', $expiry_date));
-  }
-  else {
-    $expiry_date = t('Never');
-  }
+  // Calculate the expiry date by applying the expiry_after value (E.g.
+  // "+1 day") to the time the node was updated.
+  $expiry_date = strtotime($variables['element']['#items'][0]['value'], $variables['element']['#object']->changed);
+  // Format the date.
+  $expiry_date = date(variable_get('date_format_short'), $expiry_date);
 
   $variables['items'][0]['#markup'] = $expiry_date;
 }
