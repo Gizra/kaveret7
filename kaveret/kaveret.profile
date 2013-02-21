@@ -129,6 +129,7 @@ function kaveret_set_variables() {
     'date_first_day' => 1,
     'date_format_medium' => 'D, Y-m-d H:i',
     'date_format_medium_no_time' => 'D, Y-m-d',
+    'date_format_short' => 'Y-m-d',
     // Enable user picture support and set the default to a square thumbnail option.
     'user_pictures' => '1',
     'user_picture_dimensions' => '1024x1024',

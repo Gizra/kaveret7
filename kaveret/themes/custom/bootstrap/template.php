@@ -13,7 +13,7 @@ $includes = file_scan_directory($theme_path . '/includes/modules', '/\.inc$/');
 foreach ($includes as $include) {
   if (module_exists($include->name)) {
     require_once $include->uri;
-  }    
+  }
 }
 
 // Auto-rebuild the theme registry during theme development.
@@ -25,7 +25,7 @@ if (theme_get_setting('bootstrap_rebuild_registry') && !defined('MAINTENANCE_MOD
 }
 
 /**
- * hook_theme() 
+ * hook_theme()
  */
 function bootstrap_theme(&$existing, $type, $theme, $path) {
   // If we are auto-rebuilding the theme registry, warn about the feature.
@@ -39,7 +39,7 @@ function bootstrap_theme(&$existing, $type, $theme, $path) {
     flood_register_event($GLOBALS['theme'] . '_rebuild_registry_warning');
     drupal_set_message(t('For easier theme development, the theme registry is being rebuilt on every page request. It is <em>extremely</em> important to <a href="!link">turn off this feature</a> on production websites.', array('!link' => url('admin/appearance/settings/' . $GLOBALS['theme']))), 'warning', FALSE);
   }
-  
+
   return array(
     'bootstrap_links' => array(
       'variables' => array(
@@ -71,7 +71,7 @@ function bootstrap_breadcrumb($variables) {
 
   if (!empty($breadcrumb)) {
     $breadcrumbs = '<ul class="breadcrumb">';
-    
+
     $count = count($breadcrumb) - 1;
     foreach ($breadcrumb as $key => $value) {
       if ($count != $key) {
@@ -82,7 +82,7 @@ function bootstrap_breadcrumb($variables) {
       }
     }
     $breadcrumbs .= '</ul>';
-    
+
     return $breadcrumbs;
   }
 }
@@ -220,6 +220,32 @@ function bootstrap_preprocess_node(&$variables) {
 }
 
 /**
+ * Preprocess field.
+ *
+ * Reformat the expiry-after field to display the expiry date.
+ */
+function bootstrap_preprocess_field(&$variables) {
+  if ($variables['element']['#field_name'] != 'field_expiry_after') {
+    return;
+  }
+
+  $variables['label'] = t('Expiring');
+
+  if (!empty($variables['element']['#items'][0]['value'])) {
+    // Calculate the expiry date by applying the expiry_after value (E.g.
+    // "+1 day") to the time the node was updated.
+    $expiry_date = strtotime($variables['element']['#items'][0]['value'], $variables['element']['#object']->changed);
+    // Format the date.
+    $expiry_date = date(variable_get('date_format_short', $expiry_date));
+  }
+  else {
+    $expiry_date = t('Never');
+  }
+
+  $variables['items'][0]['#markup'] = $expiry_date;
+}
+
+/**
  * Preprocess variables for region.tpl.php
  *
  * @see region.tpl.php
@@ -228,7 +254,7 @@ function bootstrap_preprocess_region(&$variables, $hook) {
   if ($variables['region'] == 'content') {
     $variables['theme_hook_suggestions'][] = 'region__no_wrapper';
   }
-  
+
   if ($variables['region'] == "sidebar_first") {
     $variables['classes_array'][] = 'well';
   }
@@ -266,7 +292,7 @@ function bootstrap_process_block(&$variables, $hook) {
  */
 function _bootstrap_content_span($columns = 1) {
   $class = FALSE;
-  
+
   switch($columns) {
     case 1:
       $class = 'span12';
@@ -278,7 +304,7 @@ function _bootstrap_content_span($columns = 1) {
       $class = 'span6';
       break;
   }
-  
+
   return $class;
 }
 
