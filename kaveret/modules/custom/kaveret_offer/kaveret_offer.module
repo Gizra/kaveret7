@@ -145,3 +145,48 @@ function kaveret_offer_preprocess_comment(&$variables) {
     $variables['changed_fields'] = t('Status: @previous » @current', array('@previous' => $wrapper->field_status->label(), '@current' => $next_wrapper->field_status->label()));
   }
 }
+
+/**
+ * Implements hook_cron().
+ *
+ * Set nodes as "Expired" when their expiry date is due.
+ */
+function kaveret_offer_cron() {
+  $terms = taxonomy_get_term_by_name('Expired', 'offer_statuses');
+  if (empty($terms)) {
+    watchdog('Kaveret', t('"Expired" term not found.'));
+    return;
+  }
+  $tid = key($terms);
+
+  // Find offers and requests with an expiry date in the past.
+  $query = new EntityFieldQuery();
+  $result = $query->entityCondition('entity_type', 'node')
+    ->propertyCondition('type', array('offer', 'request'), 'IN')
+    ->fieldCondition('field_expiry_date', 'value', 'now', '>')
+    ->execute();
+
+  if (empty($result['node'])) {
+    return;
+  }
+
+  foreach(node_load_multiple(array_keys($result['node'])) as $node) {
+    // Post a comment and set the node as expired (Using field_status).
+    $comment = (object)array(
+      'nid' => $node->nid,
+      // TODO: We can create a "System Message" user, like in drupal.org.
+      'uid' => 1,
+      'cid' => 0,
+      'pid' => 0,
+      'is_anonymous' => 0,
+      'status' => COMMENT_PUBLISHED,
+      'language' => LANGUAGE_NONE,
+      'subject' => '',
+      'field_status' => array(LANGUAGE_NONE => array(array('target_id' => $tid))),
+      // TODO: Should the value be translated?
+      'comment_body' => array(LANGUAGE_NONE => array(array('value' => 'Expired', 'format' => 'plain_text'))),
+    );
+    comment_submit($comment);
+    comment_save($comment);
+  }
+}
