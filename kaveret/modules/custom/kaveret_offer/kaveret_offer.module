@@ -106,3 +106,62 @@ function kaveret_offer_comment_presave($comment) {
     node_save($node);
   }
 }
+
+/**
+ * Comment preprocess.
+ *
+ * Add all the fields that have changed from previous comment.
+ */
+function kaveret_offer_preprocess_comment(&$variables) {
+  $comment = $variables['comment'];
+  $node = $variables['node'];
+  $variables['changed_fields'] = '';
+
+  $cache = &drupal_static(__FUNCTION__, array());
+  // Cache all revisions of the current node.
+  if (isset($cache['revisions'])) {
+    $revisions = $cache['revisions'];
+  }
+  else {
+    // Load all node revisions.
+    $revisions = array();
+    foreach (array_keys(node_revision_list($node)) as $vid) {
+      $revisions[$vid] = node_load($node->nid, $vid);
+    }
+    $cache['revisions'] = $revisions;
+  }
+
+  if (isset($cache[$node->nid])) {
+    $thread = $cache[$node->nid];
+  }
+  else {
+    $thread = comment_get_thread($node, COMMENT_MODE_FLAT, 1000);
+    $cache[$node->nid] = $thread;
+  }
+
+  $wrapper = entity_metadata_wrapper('comment', $comment);
+  if (!$comment_vid = $wrapper->field_vid->value()) {
+    return;
+  }
+
+  $node_revision = $revisions[$comment_vid];
+  $wrapper = entity_metadata_wrapper('node', $node_revision);
+
+  // Find the task revision that was created after the comment was saved, in
+  // order to find the changes that were made with the comment.
+  $next_vid = NULL;
+  foreach(array_keys($revisions) as $vid) {
+    if ($vid == $comment_vid) {
+      break;
+    }
+    $next_vid = $vid;
+  }
+
+  $node_next_revision = $revisions[$next_vid];
+  $next_wrapper = entity_metadata_wrapper('node', $node_next_revision);
+
+
+  if ($wrapper->field_status->value() != $next_wrapper->field_status->value()) {
+    $variables['changed_fields'] = t('Status: @previous » @current', array('@previous' => $wrapper->field_status->label(), '@current' => $next_wrapper->field_status->label()));
+  }
+}
