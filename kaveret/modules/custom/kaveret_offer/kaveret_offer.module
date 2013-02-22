@@ -164,6 +164,8 @@ function kaveret_offer_cron() {
   $result = $query->entityCondition('entity_type', 'node')
     ->propertyCondition('type', array('offer', 'request'), 'IN')
     ->fieldCondition('field_expiry_date', 'value', 'now', '<')
+    // Ignore nodes that are already expired.
+    ->fieldCondition('field_status', 'target_id', $tid, '<>')
     ->execute();
 
   if (empty($result['node'])) {
