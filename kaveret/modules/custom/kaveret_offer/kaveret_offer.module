@@ -30,10 +30,9 @@ function kaveret_offer_form_alter(&$form, &$form_state, $form_id) {
       drupal_set_title($node->type == 'request' ? t('I would like to request') : t('I would like to offer'));
     }
 
-    // The expiry label is different on the node view because there we display a
-    // specific date.
-    $form['field_expiry_after'][LANGUAGE_NONE]['#title'] = t('Delete after');
     $form['field_expiry_after'][LANGUAGE_NONE]['#options']['_none'] = t('Never');
+
+    $form['field_expiry_date']['#access'] = FALSE;
   }
   // Offer and request comments forms.
   elseif (in_array($form_id, array('comment_node_offer_form', 'comment_node_request_form'))) {
@@ -48,40 +47,21 @@ function kaveret_offer_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
- * Implements hook_field_formatter_info().
+ * Implements hook_node_presave().
+ *
+ * Set the expiry date of offers and requests accoring to the "Delete after"
+ * setting.
  */
-function kaveret_offer_field_formatter_info() {
-  return array(
-    'expiry_date' => array(
-      'label' => t('Expiry date'),
-      'field types' => array('list_text'),
-    ),
-  );
-}
-
-/**
- * Implements hook_field_formatter_view().
- */
-function kaveret_offer_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
-  $element = array();
-
-  switch ($display['type']) {
-    case 'expiry_date':
-      // Ignore expiry date: "Never".
-      if (empty($items[0]['value'])) {
-        break;
-      }
-
-      // Calculate the expiry date by applying the expiry_after value (E.g.
-      // "+1 day") to the time the node was updated.
-      $expiry_date = strtotime($items[0]['value'], $entity->changed);
-      // Format the date.
-      $expiry_date = date(variable_get('date_format_short'), $expiry_date);
-      $element[0] = array('#markup' => $expiry_date);
-      break;
+function kaveret_offer_node_presave($node) {
+  $wrapper = entity_metadata_wrapper('node', $node);
+  if (!$wrapper->field_expiry_after->value()) {
+    return;
   }
 
-  return $element;
+  // Calculate the expiry date by applying the expiry_after value (E.g.
+  // "+1 day") to the time the node was updated.
+  $expiry_date = strtotime($wrapper->field_expiry_after->value(), $node->changed);
+  $wrapper->field_expiry_date->set($expiry_date);
 }
 
 /**
