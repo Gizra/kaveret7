@@ -5,3 +5,41 @@
  */
 
 include_once 'kaveret_og.features.inc';
+
+/**
+ * Implements hook_node_insert().
+ *
+ * Attach every group-content to a community.
+ */
+function kaveret_og_node_insert($node) {
+  if (!og_is_group_content_type('node', $node->type)) {
+    return;
+  }
+
+  $wrapper = entity_metadata_wrapper('node', $node);
+
+  // Assocaite with company only if not already attached.
+  if ($wrapper->og_group_ref->value()) {
+    return;
+  }
+
+  // User didn't set the community.
+  $gids = og_get_entity_groups();
+
+  $nid = FALSE;
+  if (!empty($gids['node'])) {
+    // Get the first community the user belongs to.
+    foreach (node_load_multiple($gids['node']) as $group) {
+      if ($group->type == 'community') {
+        $nid = $group->nid;
+        break;
+      }
+    }
+  }
+
+  if (!$nid) {
+    throw new Exception(t('User does not belong to any community, thus node cannot be attached to a community.'));
+  }
+
+  og_group('node', $nid, array('entity_type' => 'node', 'entity' => $node->nid));
+}
