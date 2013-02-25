@@ -78,8 +78,8 @@ function kaveret_offer_default_message_type() {
         },
         {
           "value" : "\\u003Ca href=\\u0022[message:field-node:url:absolute]\\u0022\\u003E[message:field-node:title]\\u003C\\/a\\u003E\\r\\n\\r\\n[message:field-node:body]",
-          "format" : "filtered_html",
-          "safe_value" : "\\u003Cp\\u003E\\u003Ca href=\\u0022absolute]\\u0022\\u003E[message:field-node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-node:body]\\u003C\\/p\\u003E\\n"
+          "format" : "full_html",
+          "safe_value" : "\\u003Cp\\u003E\\u003Ca href=\\u0022[message:field-node:url:absolute]\\u0022\\u003E[message:field-node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-node:body]\\u003C\\/p\\u003E\\n"
         }
       ]
     },

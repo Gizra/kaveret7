@@ -38,7 +38,7 @@ function kaveret_offer_form_alter(&$form, &$form_state, $form_id) {
       '#value' => t('Save and broadcast'),
       // Copy the submit handlers from the "Save" button, and add the broadcast
       // handler.
-      '#submit' => array_merge($form['actions']['submit']['#submit'], array('kaveret_offer_broadcast')),
+      '#submit' => array_merge($form['actions']['submit']['#submit'], array('kaveret_offer_broadcast_submit')),
       '#weight' => 10,
     );
 
@@ -61,7 +61,7 @@ function kaveret_offer_form_alter(&$form, &$form_state, $form_id) {
  *
  * Send a notification to all users contining the offer/ request details.
  */
-function kaveret_offer_broadcast($form, &$form_state) {
+function kaveret_offer_broadcast_submit($form, &$form_state) {
   $node = $form_state['node'];
 
   $message = message_create('broadcast', array('uid' => $node->uid));
