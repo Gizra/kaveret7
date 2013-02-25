@@ -63,7 +63,13 @@ function kaveret_offer_form_alter(&$form, &$form_state, $form_id) {
  * Send a notification to all users contining the offer/ request details.
  */
 function kaveret_offer_broadcast($form, &$form_state) {
+  $node = $form_state['node'];
 
+  $message = message_create('broadcast', array('uid' => $node->uid));
+  $wrapper = entity_metadata_wrapper('message', $message);
+  $wrapper->field_node_ref->set($node);
+
+  message_subscribe_process_message('node', $node, $message);
 }
 
 /**

@@ -57,6 +57,38 @@ function kaveret_offer_image_default_styles() {
 }
 
 /**
+ * Implements hook_default_message_type().
+ */
+function kaveret_offer_default_message_type() {
+  $items = array();
+  $items['broadcast'] = entity_import('message_type', '{
+    "name" : "broadcast",
+    "description" : "Broadcast",
+    "argument_keys" : [],
+    "argument" : [],
+    "category" : "message_type",
+    "data" : { "purge" : { "override" : 0, "enabled" : 0, "quota" : "", "days" : "" } },
+    "language" : "",
+    "arguments" : null,
+    "message_text" : { "und" : [
+        {
+          "value" : "[message:field-node-ref:title]",
+          "format" : "plain_text",
+          "safe_value" : "\\u003Cp\\u003E[message:field-node-ref:title]\\u003C\\/p\\u003E\\n"
+        },
+        {
+          "value" : "\\u003Ca href=\\u0022[message:field-node-ref:url:absolute]\\u0022\\u003E[message:field-node-ref:title]\\u003C\\/a\\u003E\\r\\n\\r\\n[message:field-node-ref:body]",
+          "format" : "filtered_html",
+          "safe_value" : "\\u003Cp\\u003E\\u003Ca href=\\u0022absolute]\\u0022\\u003E[message:field-node-ref:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-node-ref:body]\\u003C\\/p\\u003E\\n"
+        }
+      ]
+    },
+    "rdf_mapping" : []
+  }');
+  return $items;
+}
+
+/**
  * Implements hook_node_info().
  */
 function kaveret_offer_node_info() {
