@@ -65,29 +65,6 @@ function kaveret_offer_node_presave($node) {
 }
 
 /**
- * Implements hook_comment_presave().
- *
- * Save update the node status according to the setting on the comment.
- */
-function kaveret_offer_comment_presave($comment) {
-  $wrapper = entity_metadata_wrapper('comment', $comment);
-  $node = $wrapper->node->value();
-
-  // Set the values from the comment on the offer/ request node.
-  $value = $comment->field_status[LANGUAGE_NONE][0]['target_id'];
-  $original_value = $node->field_status[LANGUAGE_NONE][0]['target_id'];
-
-  // Check if the field was changed on the comment.
-  if ($value != $original_value) {
-    $wrapper->node->field_status->set($value);
-    // Set the revision ID to the node ID before it is saved.
-    $wrapper->field_vid->set($node->vid);
-    $node->revision = TRUE;
-    node_save($node);
-  }
-}
-
-/**
  * Comment preprocess.
  *
  * Add all the fields that have changed from previous comment.
@@ -140,7 +117,6 @@ function kaveret_offer_preprocess_comment(&$variables) {
   $node_next_revision = $revisions[$next_vid];
   $next_wrapper = entity_metadata_wrapper('node', $node_next_revision);
 
-
   if ($wrapper->field_status->value() != $next_wrapper->field_status->value()) {
     $variables['changed_fields'] = t('Status: @previous » @current', array('@previous' => $wrapper->field_status->label(), '@current' => $next_wrapper->field_status->label()));
   }
@@ -190,5 +166,28 @@ function kaveret_offer_cron() {
     );
     comment_submit($comment);
     comment_save($comment);
+  }
+}
+
+/**
+ * Implements hook_comment_presave().
+ *
+ * Save update the node status according to the setting on the comment.
+ */
+function kaveret_offer_comment_presave($comment) {
+  $wrapper = entity_metadata_wrapper('comment', $comment);
+  $node = $wrapper->node->value();
+
+  // Set the values from the comment on the offer/ request node.
+  $value = $comment->field_status[LANGUAGE_NONE][0]['target_id'];
+  $original_value = $node->field_status[LANGUAGE_NONE][0]['target_id'];
+
+  // Check if the field was changed on the comment.
+  if ($value != $original_value) {
+    $wrapper->node->field_status->set($value);
+    // Set the revision ID to the node ID before it is saved.
+    $wrapper->field_vid->set($node->vid);
+    $node->revision = TRUE;
+    node_save($node);
   }
 }
