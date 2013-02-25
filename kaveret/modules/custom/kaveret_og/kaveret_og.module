@@ -43,3 +43,13 @@ function kaveret_og_node_insert($node) {
 
   og_group('node', $nid, array('entity_type' => 'node', 'entity' => $node->nid));
 }
+
+/**
+ * Implements hook_node_insert().
+ *
+ * Attach users to the default community.
+ * TODO: Rethink how this is done when we'll communities.
+ */
+function kaveret_og_user_insert($user) {
+  og_group('node', variable_get('kaveret_og_default_community'), array('entity_type' => 'user', 'entity' => $user['uid']));
+}
