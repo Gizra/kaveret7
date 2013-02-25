@@ -139,9 +139,6 @@ function kaveret_offer_preprocess_comment(&$variables) {
  * Set nodes as "Expired" when their expiry date is due.
  */
 function kaveret_offer_cron() {
-  $terms = taxonomy_get_term_by_name('Expired', 'offer_statuses');
-  $tid = key($terms);
-
   // Find offers and requests with an expiry date in the past.
   $query = new EntityFieldQuery();
   $result = $query->entityCondition('entity_type', 'node')
@@ -150,7 +147,6 @@ function kaveret_offer_cron() {
     ->fieldCondition('field_expiry_date', 'value', 'now', '<')
     // Ignore nodes that are already expired.
     ->fieldCondition('field_expired', 'value', FALSE)
-    ->fieldCondition('field_status', 'target_id', $tid, '<>')
     ->execute();
 
   if (empty($result['node'])) {
@@ -174,9 +170,7 @@ function kaveret_offer_cron() {
       'status' => COMMENT_PUBLISHED,
       'language' => LANGUAGE_NONE,
       'subject' => '',
-      'field_status' => array(LANGUAGE_NONE => array(array('target_id' => $tid))),
-      // TODO: Should the value be translated?
-      'comment_body' => array(LANGUAGE_NONE => array(array('value' => 'Expired', 'format' => 'plain_text'))),
+      'comment_body' => array(LANGUAGE_NONE => array(array('value' => 'Automatically set as expired.', 'format' => 'plain_text'))),
     );
     comment_save($comment);
   }
@@ -190,6 +184,12 @@ function kaveret_offer_cron() {
 function kaveret_offer_comment_presave($comment) {
   $wrapper = entity_metadata_wrapper('comment', $comment);
   $node = $wrapper->node->value();
+
+  // Ignore when no status is set on the comment (Happens when the comment is
+  // saved programmatically).
+  if (empty($comment->field_status[LANGUAGE_NONE][0]['target_id'])) {
+    return;
+  }
 
   // Set the values from the comment on the offer/ request node.
   $value = $comment->field_status[LANGUAGE_NONE][0]['target_id'];
