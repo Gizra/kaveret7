@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Kaveret OG feature.
+ */
+
+include_once 'kaveret_og.features.inc';
