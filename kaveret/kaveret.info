@@ -25,6 +25,7 @@ dependencies[] = shortcut
 dependencies[] = taxonomy
 
 ; Contrib modules
+dependencies[] = advancedqueue
 dependencies[] = admin_menu_toolbar
 dependencies[] = admin_views
 dependencies[] = ctools
