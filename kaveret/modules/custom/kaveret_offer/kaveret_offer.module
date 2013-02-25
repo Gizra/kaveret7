@@ -34,6 +34,16 @@ function kaveret_offer_form_alter(&$form, &$form_state, $form_id) {
     // specific date.
     $form['field_expiry_after'][LANGUAGE_NONE]['#title'] = t('Delete after');
     $form['field_expiry_after'][LANGUAGE_NONE]['#options']['_none'] = t('Never');
+
+    // Add the broadcast button.
+    $form['actions']['submit_broadcast'] = array(
+      '#type' => 'submit',
+      '#value' => t('Save and broadcast'),
+      // Copy the submit handlers from the "Save" button, and add the broadcast
+      // handler.
+      '#submit' => array_merge($form['actions']['submit']['#submit'], array('kaveret_offer_broadcast')),
+      '#weight' => 10,
+    );
   }
   // Offer and request comments forms.
   elseif (in_array($form_id, array('comment_node_offer_form', 'comment_node_request_form'))) {
@@ -45,6 +55,15 @@ function kaveret_offer_form_alter(&$form, &$form_state, $form_id) {
     field_attach_form('node', $node, $temp_form, $form_state);
     $form['field_status'] = $temp_form['field_status'];
   }
+}
+
+/**
+ * Submit handler for offer/ request form.
+ *
+ * Send a notification to all users contining the offer/ request details.
+ */
+function kaveret_offer_broadcast($form, &$form_state) {
+
 }
 
 /**
