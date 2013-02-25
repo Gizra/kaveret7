@@ -50,7 +50,7 @@ function kaveret_offer_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'comment',
@@ -67,61 +67,7 @@ function kaveret_offer_field_default_fields() {
           'rows' => 5,
         ),
         'type' => 'text_textarea',
-        'weight' => '0',
-      ),
-    ),
-  );
-
-  // Exported field: 'comment-comment_node_offer-field_vid'.
-  $fields['comment-comment_node_offer-field_vid'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_vid',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'number',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'comment_node_offer',
-      'default_value' => array(
-        0 => array(
-          'value' => '0',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '1',
-        ),
-      ),
-      'entity_type' => 'comment',
-      'field_name' => 'field_vid',
-      'label' => 'Revison ID',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'number',
-        'settings' => array(),
-        'type' => 'number',
-        'weight' => '1',
+        'weight' => 0,
       ),
     ),
   );
@@ -220,7 +166,7 @@ function kaveret_offer_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => 0,
         ),
       ),
       'entity_type' => 'comment',
@@ -237,61 +183,7 @@ function kaveret_offer_field_default_fields() {
           'rows' => 5,
         ),
         'type' => 'text_textarea',
-        'weight' => '0',
-      ),
-    ),
-  );
-
-  // Exported field: 'comment-comment_node_request-field_vid'.
-  $fields['comment-comment_node_request-field_vid'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_vid',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'number',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'number_integer',
-    ),
-    'field_instance' => array(
-      'bundle' => 'comment_node_request',
-      'default_value' => array(
-        0 => array(
-          'value' => '0',
-        ),
-      ),
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '1',
-        ),
-      ),
-      'entity_type' => 'comment',
-      'field_name' => 'field_vid',
-      'label' => 'Revison ID',
-      'required' => 0,
-      'settings' => array(
-        'max' => '',
-        'min' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 0,
-        'module' => 'number',
-        'settings' => array(),
-        'type' => 'number',
-        'weight' => '2',
+        'weight' => 0,
       ),
     ),
   );
@@ -508,6 +400,75 @@ function kaveret_offer_field_default_fields() {
         'settings' => array(),
         'type' => 'options_select',
         'weight' => '0',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-offer-field_expired'.
+  $fields['node-offer-field_expired'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_expired',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => 'No',
+          1 => 'Yes',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'offer',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 7,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_expired',
+      'label' => 'Expired',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '8',
       ),
     ),
   );
@@ -989,7 +950,7 @@ function kaveret_offer_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'text_textfield',
-        'weight' => -5,
+        'weight' => '-5',
       ),
     ),
   );
@@ -1152,6 +1113,75 @@ function kaveret_offer_field_default_fields() {
         'settings' => array(),
         'type' => 'options_select',
         'weight' => '0',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-request-field_expired'.
+  $fields['node-request-field_expired'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_expired',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => 'No',
+          1 => 'Yes',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_boolean',
+    ),
+    'field_instance' => array(
+      'bundle' => 'request',
+      'default_value' => array(
+        0 => array(
+          'value' => 0,
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 7,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_expired',
+      'label' => 'Expired',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'display_label' => 1,
+        ),
+        'type' => 'options_onoff',
+        'weight' => '9',
       ),
     ),
   );
@@ -1633,7 +1663,7 @@ function kaveret_offer_field_default_fields() {
           'size' => 60,
         ),
         'type' => 'text_textfield',
-        'weight' => -5,
+        'weight' => '-5',
       ),
     ),
   );
@@ -1644,6 +1674,7 @@ function kaveret_offer_field_default_fields() {
   t('Category');
   t('Comment');
   t('Delete after');
+  t('Expired');
   t('Expiring');
   t('Image');
   t('Revison ID');

@@ -47,6 +47,17 @@ function kaveret_offer_form_alter(&$form, &$form_state, $form_id) {
 }
 
 /**
+ * Implements hook_field_access().
+ *
+ * Hide the "expired" field.
+ */
+function kaveret_offer_field_access($op, $field, $entity_type, $entity, $account) {
+  if ($field['field_name'] == 'field_expired') {
+    return FALSE;
+  }
+}
+
+/**
  * Implements hook_node_presave().
  *
  * Set the expiry date of offers and requests accoring to the "Delete after"
@@ -129,18 +140,16 @@ function kaveret_offer_preprocess_comment(&$variables) {
  */
 function kaveret_offer_cron() {
   $terms = taxonomy_get_term_by_name('Expired', 'offer_statuses');
-  if (empty($terms)) {
-    watchdog('Kaveret', t('"Expired" term not found.'));
-    return;
-  }
   $tid = key($terms);
 
   // Find offers and requests with an expiry date in the past.
   $query = new EntityFieldQuery();
   $result = $query->entityCondition('entity_type', 'node')
     ->propertyCondition('type', array('offer', 'request'), 'IN')
+    ->propertyCondition('status', NODE_PUBLISHED)
     ->fieldCondition('field_expiry_date', 'value', 'now', '<')
     // Ignore nodes that are already expired.
+    ->fieldCondition('field_expired', 'value', FALSE)
     ->fieldCondition('field_status', 'target_id', $tid, '<>')
     ->execute();
 
@@ -149,6 +158,11 @@ function kaveret_offer_cron() {
   }
 
   foreach(node_load_multiple(array_keys($result['node'])) as $node) {
+    // Set the node as expired.
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $wrapper->field_expired->set(TRUE);
+    $wrapper->save();
+
     // Post a comment and set the node as expired (Using field_status).
     $comment = (object)array(
       'nid' => $node->nid,
@@ -164,7 +178,6 @@ function kaveret_offer_cron() {
       // TODO: Should the value be translated?
       'comment_body' => array(LANGUAGE_NONE => array(array('value' => 'Expired', 'format' => 'plain_text'))),
     );
-    comment_submit($comment);
     comment_save($comment);
   }
 }
