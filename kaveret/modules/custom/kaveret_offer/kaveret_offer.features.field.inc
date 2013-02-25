@@ -242,14 +242,14 @@ function kaveret_offer_field_default_fields() {
     ),
   );
 
-  // Exported field: 'message-broadcast-field_node_ref'.
-  $fields['message-broadcast-field_node_ref'] = array(
+  // Exported field: 'message-broadcast-field_node'.
+  $fields['message-broadcast-field_node'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_node_ref',
+      'field_name' => 'field_node',
       'foreign keys' => array(
         'node' => array(
           'columns' => array(
@@ -316,7 +316,7 @@ function kaveret_offer_field_default_fields() {
         ),
       ),
       'entity_type' => 'message',
-      'field_name' => 'field_node_ref',
+      'field_name' => 'field_node',
       'label' => 'Node reference',
       'required' => 1,
       'settings' => array(

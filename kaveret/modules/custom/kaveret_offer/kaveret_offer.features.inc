@@ -72,14 +72,14 @@ function kaveret_offer_default_message_type() {
     "arguments" : null,
     "message_text" : { "und" : [
         {
-          "value" : "[message:field-node-ref:title]",
+          "value" : "[message:field-node:title]",
           "format" : "plain_text",
-          "safe_value" : "\\u003Cp\\u003E[message:field-node-ref:title]\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cp\\u003E[message:field-node:title]\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "\\u003Ca href=\\u0022[message:field-node-ref:url:absolute]\\u0022\\u003E[message:field-node-ref:title]\\u003C\\/a\\u003E\\r\\n\\r\\n[message:field-node-ref:body]",
+          "value" : "\\u003Ca href=\\u0022[message:field-node:url:absolute]\\u0022\\u003E[message:field-node:title]\\u003C\\/a\\u003E\\r\\n\\r\\n[message:field-node:body]",
           "format" : "filtered_html",
-          "safe_value" : "\\u003Cp\\u003E\\u003Ca href=\\u0022absolute]\\u0022\\u003E[message:field-node-ref:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-node-ref:body]\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cp\\u003E\\u003Ca href=\\u0022absolute]\\u0022\\u003E[message:field-node:title]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\n\\u003Cp\\u003E[message:field-node:body]\\u003C\\/p\\u003E\\n"
         }
       ]
     },
