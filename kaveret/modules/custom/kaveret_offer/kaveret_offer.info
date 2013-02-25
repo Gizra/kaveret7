@@ -10,6 +10,7 @@ dependencies[] = image
 dependencies[] = list
 dependencies[] = message
 dependencies[] = number
+dependencies[] = og
 dependencies[] = og_ui
 dependencies[] = page_manager
 dependencies[] = strongarm
