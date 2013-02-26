@@ -48,8 +48,19 @@ function kaveret_og_node_insert($node) {
  * Implements hook_node_insert().
  *
  * Attach users to the default community.
- * TODO: Rethink how this is done when we'll communities.
+ * TODO: Rethink how this is done when we'll have actual communities.
  */
 function kaveret_og_user_insert($user) {
   og_group('node', variable_get('kaveret_og_default_community'), array('entity_type' => 'user', 'entity' => $user['uid']));
+}
+
+/**
+ * Implements hook_field_access().
+ *
+ * Hide the "community" og_group field.
+ */
+function kaveret_og_field_access($op, $field, $entity_type, $entity, $account) {
+  if ($field['field_name'] == 'og_group_ref') {
+    return FALSE;
+  }
 }
