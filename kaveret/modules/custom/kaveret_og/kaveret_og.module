@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Code for the Kaveret OG feature.
@@ -16,14 +17,13 @@ function kaveret_og_node_insert($node) {
     return;
   }
 
-  $wrapper = entity_metadata_wrapper('node', $node);
-
-  // Assocaite with company only if not already attached.
-  if ($wrapper->og_group_ref->value()) {
+  // Attach node to a community only if not already attached.
+  $gids = og_get_entity_groups('node', $node);
+  if (!empty($gids)) {
     return;
   }
 
-  // User didn't set the community.
+  // No community is set; Attach node to the user's first community.
   $gids = og_get_entity_groups();
 
   $nid = FALSE;
@@ -42,25 +42,4 @@ function kaveret_og_node_insert($node) {
   }
 
   og_group('node', $nid, array('entity_type' => 'node', 'entity' => $node->nid));
-}
-
-/**
- * Implements hook_node_insert().
- *
- * Attach users to the default community.
- * TODO: Rethink how this is done when we'll have actual communities.
- */
-function kaveret_og_user_insert($user) {
-  og_group('node', variable_get('kaveret_og_default_community'), array('entity_type' => 'user', 'entity' => $user['uid']));
-}
-
-/**
- * Implements hook_field_access().
- *
- * Hide the "community" og_group field.
- */
-function kaveret_og_field_access($op, $field, $entity_type, $entity, $account) {
-  if ($field['field_name'] == 'og_group_ref') {
-    return FALSE;
-  }
 }

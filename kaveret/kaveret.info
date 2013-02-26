@@ -51,7 +51,6 @@ dependencies[] = libraries
 dependencies[] = nodequeue
 dependencies[] = og
 dependencies[] = og_context
-;dependencies[] = og_purl
 dependencies[] = og_ui
 dependencies[] = strongarm
 dependencies[] = title

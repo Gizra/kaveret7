@@ -1011,10 +1011,16 @@ function kaveret_offer_field_default_fields() {
             'og_behavior' => array(
               'status' => TRUE,
             ),
+            'views-select-list' => array(
+              'status' => 0,
+            ),
           ),
           'membership_type' => 'og_membership_type_default',
+          'sort' => array(
+            'type' => 'none',
+          ),
           'target_bundles' => array(
-            0 => 'community',
+            'community' => 'community',
           ),
         ),
         'handler_submit' => 'Change handler',
@@ -1027,6 +1033,7 @@ function kaveret_offer_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'offer',
       'default_value' => NULL,
+      'default_value_function' => 'entityreference_prepopulate_field_default_value',
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -1046,7 +1053,7 @@ function kaveret_offer_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'og_group_ref',
       'label' => 'Groups audience',
-      'required' => FALSE,
+      'required' => 0,
       'settings' => array(
         'behaviors' => array(
           'og_widget' => array(
@@ -1056,6 +1063,17 @@ function kaveret_offer_field_default_fields() {
             'default' => array(
               'widget_type' => 'options_select',
             ),
+            'status' => TRUE,
+          ),
+          'prepopulate' => array(
+            'action' => 'hide',
+            'action_on_edit' => 1,
+            'fallback' => 'redirect',
+            'og_context' => 1,
+            'skip_perm' => '0',
+            'status' => 1,
+          ),
+          'taxonomy-index' => array(
             'status' => TRUE,
           ),
         ),
@@ -1074,6 +1092,7 @@ function kaveret_offer_field_default_fields() {
         ),
       ),
       'widget' => array(
+        'active' => 0,
         'module' => 'og',
         'settings' => array(),
         'type' => 'og_complex',
@@ -1825,10 +1844,16 @@ function kaveret_offer_field_default_fields() {
             'og_behavior' => array(
               'status' => TRUE,
             ),
+            'views-select-list' => array(
+              'status' => 0,
+            ),
           ),
           'membership_type' => 'og_membership_type_default',
+          'sort' => array(
+            'type' => 'none',
+          ),
           'target_bundles' => array(
-            0 => 'community',
+            'community' => 'community',
           ),
         ),
         'handler_submit' => 'Change handler',
@@ -1841,6 +1866,7 @@ function kaveret_offer_field_default_fields() {
     'field_instance' => array(
       'bundle' => 'request',
       'default_value' => NULL,
+      'default_value_function' => 'entityreference_prepopulate_field_default_value',
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -1860,7 +1886,7 @@ function kaveret_offer_field_default_fields() {
       'entity_type' => 'node',
       'field_name' => 'og_group_ref',
       'label' => 'Groups audience',
-      'required' => FALSE,
+      'required' => 0,
       'settings' => array(
         'behaviors' => array(
           'og_widget' => array(
@@ -1870,6 +1896,17 @@ function kaveret_offer_field_default_fields() {
             'default' => array(
               'widget_type' => 'options_select',
             ),
+            'status' => TRUE,
+          ),
+          'prepopulate' => array(
+            'action' => 'hide',
+            'action_on_edit' => 1,
+            'fallback' => 'redirect',
+            'og_context' => 1,
+            'skip_perm' => '0',
+            'status' => 1,
+          ),
+          'taxonomy-index' => array(
             'status' => TRUE,
           ),
         ),
@@ -1888,6 +1925,7 @@ function kaveret_offer_field_default_fields() {
         ),
       ),
       'widget' => array(
+        'active' => 0,
         'module' => 'og',
         'settings' => array(),
         'type' => 'og_complex',
