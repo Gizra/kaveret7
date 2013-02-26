@@ -24,11 +24,11 @@ abstract class KaveretMigration extends Migration {
       $class_name = 'MigrateDestinationNode';
 
       if (og_is_group_content_type('node', $this->bundle)) {
-        $csv_cols[] = array('og_group_ref', 'Community');
+        $csv_cols[] = array(OG_AUDIENCE_FIELD, 'Community');
         $this->dependencies[] = 'KaveretCommunityNodes';
 
         $this
-          ->addFieldMapping('og_group_ref', 'og_group_ref')
+          ->addFieldMapping(OG_AUDIENCE_FIELD, 'og_group_ref')
           ->sourceMigration('KaveretCommunityNodes');
       }
 

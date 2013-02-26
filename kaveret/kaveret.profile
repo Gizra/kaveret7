@@ -46,6 +46,11 @@ function kaveret_install_tasks() {
     'display' => FALSE,
   );
 
+  $tasks['kaveret_og_setup'] = array(
+    'display_name' => st('Create OG fields'),
+    'display' => FALSE,
+  );
+
   return $tasks;
 }
 
@@ -260,4 +265,35 @@ function kaveret_set_text_formats() {
     ),
   );
   filter_format_save($full_html_format);
+}
+
+/**
+ * Profile task; Attach OG related fields.
+ */
+function kaveret_og_setup() {
+  variable_set('og_features_ignore_og_fields', TRUE);
+
+  // Group  type.
+  og_create_field(OG_GROUP_FIELD, 'node', 'community');
+
+  // Group content types.
+  $bundles = array(
+    'offer',
+    'request',
+  );
+
+  foreach ($bundles as $bundle) {
+    $og_field = og_fields_info(OG_AUDIENCE_FIELD);
+    $og_field['instance']['label'] = 'Community';
+      // Enable Entity-reference prepopulate.
+    $og_field['instance']['settings']['behaviors']['prepopulate'] = array(
+      'status' => TRUE,
+      'action' => 'hide',
+      'action_on_edit' => TRUE,
+      'fallback' => 'redirect',
+      'og_context' => TRUE,
+    );
+
+    og_create_field(OG_AUDIENCE_FIELD, 'node', $bundle, $og_field);
+  }
 }
