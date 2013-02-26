@@ -20,6 +20,12 @@ function kaveret_form_install_configure_form_alter(&$form, $form_state) {
 function kaveret_install_tasks() {
   $tasks = array();
 
+  // Allow switching between single and multiple communities.
+  $tasks['kaveret_community_form'] = array(
+    'display_name' => st('Choose between single and multiple communities'),
+    'type' => 'form'
+  );
+
   $tasks['kaveret_set_permissions'] = array(
     'display_name' => st('Set Permissions'),
     'display' => FALSE,
@@ -41,6 +47,35 @@ function kaveret_install_tasks() {
   );
 
   return $tasks;
+}
+
+/**
+ * Single/ multiple communities form.
+ */
+function kaveret_community_form($form, &$form_state) {
+  $form['kaveret_og_single_community'] = array(
+    '#title' => t('Single community'),
+    '#type' => 'checkbox',
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Next'),
+  );
+
+  return $form;
+}
+
+/**
+ * Submit handler for single/ multiple communities form.
+ */
+function kaveret_community_form_submit($form, &$form_state) {
+  if (!empty($form_state['values']['kaveret_og_single_community'])) {
+    variable_set('kaveret_og_single_community', TRUE);
+  }
+  else {
+    module_enable(array('og_purl'));
+  }
 }
 
 /**
