@@ -71,11 +71,22 @@ function kaveret_community_form($form, &$form_state) {
  */
 function kaveret_community_form_submit($form, &$form_state) {
   if (!empty($form_state['values']['kaveret_og_single_community'])) {
-    variable_set('kaveret_og_single_community', TRUE);
+    $context_handlers = array(
+      'kaveret_og' => TRUE,
+    );
   }
   else {
+    $context_handlers = array(
+      'url' => TRUE,
+      'node' => TRUE,
+      'og_purl' => TRUE,
+    );
+
     module_enable(array('og_purl'));
   }
+
+  // Set OG-context handlers.
+  variable_set('og_context_negotiation_group_context', $context_handlers);
 }
 
 /**

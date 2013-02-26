@@ -43,3 +43,29 @@ function kaveret_og_node_insert($node) {
 
   og_group('node', $nid, array('entity_type' => 'node', 'entity' => $node->nid));
 }
+
+/**
+ * Implements hook_og_context_negotiation_info().
+ */
+function kaveret_og_og_context_negotiation_info() {
+  $providers = array();
+
+  $providers['kaveret_og'] = array(
+    'name' => t('Single community'),
+    'description' => t('Provides default context for a single-community installation.'),
+    'callback' => 'kaveret_og_og_context_handler',
+  );
+
+  return $providers;
+}
+
+/**
+ * OG-context handler.
+ *
+ * Retreive the default community group ID.
+ */
+function kaveret_og_og_context_handler() {
+  return array(
+    'node' => array(variable_get('kaveret_og_default_community')),
+  );
+}
