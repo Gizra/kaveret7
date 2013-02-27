@@ -110,6 +110,20 @@ function bootstrap_process_html_tag(&$variables) {
  * @see page.tpl.php
  */
 function bootstrap_preprocess_page(&$variables) {
+  global $language;
+
+  // Load normal or RTL CSS. We're doing it this way since the RTL CSS is
+  // designed to replace the normal one instead of overriding it.
+  $path = path_to_theme() . '/bootstrap/css';
+  if ($language->direction == LANGUAGE_RTL) {
+    drupal_add_css("$path/bootstrap-rtl.min.css");
+    drupal_add_css("$path/bootstrap-responsive-rtl.min.css");
+  }
+  else {
+    drupal_add_css("$path/bootstrap.css");
+    drupal_add_css("$path/bootstrap-responsive.css");
+  }
+
   // Add information about the number of sidebars.
   if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
     $variables['columns'] = 3;
