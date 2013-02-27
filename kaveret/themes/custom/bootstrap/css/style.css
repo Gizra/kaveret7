@@ -280,7 +280,7 @@ e.g. multipage*/
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/itamar\/www\/kaveret\/kaveret\/themes\/custom\/bootstrap\/sass\/style\.scss}line{font-family:\000039}}
 body {
-  padding-top: 80px;
+  padding-top: 0;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/itamar\/www\/kaveret\/kaveret\/themes\/custom\/bootstrap\/sass\/style\.scss}line{font-family:\0000314}}
