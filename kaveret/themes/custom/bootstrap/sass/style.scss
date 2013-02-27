@@ -6,6 +6,10 @@
 @import "drupal_bootstrap";
 @import "pages/front";
 
+body {
+  padding-top: 80px;
+}
+
 // Replacing core css
 .element-invisible {
   display: none;
