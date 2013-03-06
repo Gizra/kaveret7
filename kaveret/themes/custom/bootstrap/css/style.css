@@ -271,6 +271,16 @@
   font-size: 10px;
 }
 
+@media (max-width: 767px) {
+  /* line 76, ../sass/_menu.scss */
+  #main-menu li {
+    left: -150px;
+  }
+  /* line 79, ../sass/_menu.scss */
+  #main-menu li:hover {
+    left: -20px;
+  }
+}
 /* line 6, ../sass/_form.scss */
 form .control-group a {
   margin-left: 22px;
