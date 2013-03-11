@@ -261,11 +261,6 @@ function kaveret_offer_views_pre_render(&$view) {
     return;
   }
 
-  // Make sure we have the user ID as an argument.
-  if (empty($view->argument['uid']->argument)) {
-    return;
-  }
-
   $uid = $view->argument['uid']->argument;
   $view->build_info['title'] = l($view->build_info['title'], 'user/' . $uid);
 

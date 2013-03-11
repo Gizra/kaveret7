@@ -77,7 +77,7 @@ function kaveret_offer_views_default_views() {
     'uid' => array(
       'type' => 'context',
       'context' => 'entity:user.uid',
-      'context_optional' => 1,
+      'context_optional' => 0,
       'panel' => '0',
       'fixed' => '',
       'label' => 'Content: Author uid',
