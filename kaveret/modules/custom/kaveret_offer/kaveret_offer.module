@@ -245,3 +245,23 @@ function kaveret_offer_comment_presave($comment) {
     node_save($node);
   }
 }
+
+/**
+ * Implements hook_views_pre_render().
+ *
+ * Link the my-content view title to the user profile.
+ */
+function kaveret_offer_views_pre_render(&$view) {
+  if ($view->name != 'my_content') {
+    return;
+  }
+
+  // Make sure we have the user ID as an argument.
+  if (empty($view->argument['uid']->argument)) {
+    return;
+  }
+
+  $uid = $view->argument['uid']->argument;
+  $view->build_info['title'] = l($view->build_info['title'], 'user/' . $uid);
+
+}
