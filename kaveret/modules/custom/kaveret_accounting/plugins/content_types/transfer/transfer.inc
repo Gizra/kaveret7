@@ -22,7 +22,7 @@ function kaveret_accounting_transfer_content_type_render($subtype, $conf, $args,
   $block = new stdClass();
   $block->module = 'kaveret_accounting';
   $block->title = '';
-  $block->content = 'Ha!';
+  $block->content = mcapi_get_form('1stparty');
   return $block;
 }
 

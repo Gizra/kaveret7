@@ -16,7 +16,10 @@ function kaveret_accounting_default_page_manager_pages() {
   $page->admin_title = 'My Wallet';
   $page->admin_description = '';
   $page->path = 'my-wallet';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array();
   $page->conf = array(
