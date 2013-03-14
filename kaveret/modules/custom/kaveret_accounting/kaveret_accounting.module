@@ -4,6 +4,16 @@
  * @file
  */
 
+include_once 'kaveret_accounting.features.inc';
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function kaveret_accounting_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'ctools') {
+    return 'plugins/' . $plugin;
+  }
+}
 
 /**
  * Implements hook_mcapicurrencies_default().

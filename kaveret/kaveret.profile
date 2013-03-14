@@ -440,10 +440,11 @@ function kaveret_menus_setup() {
   $mlid = menu_link_save($item);
 
   $item = array(
-    'link_title' => 'item',
-    'link_path' => '<front>',
+    'link_title' => 'My Wallet',
+    'link_path' => 'my-wallet',
     'menu_name' => 'side-menu',
     'plid' => $mlid,
+    'customized' => TRUE,
   );
   menu_link_save($item);
 
