@@ -38,6 +38,13 @@ abstract class KaveretMigration extends Migration {
       $this->addFieldMapping('name', 'name');
       $class_name = 'MigrateDestinationTerm';
       $csv_cols[] = array('name', 'Name');
+      if (!empty($this->translate)) {
+        // Add translation settings.
+        $this->addFieldMapping('language')
+          ->defaultValue('en');
+
+        $this->csvColumns[] = array($this->translate . '_name', "Name $this->translate");
+      }
     }
 
     // Rebuild the csv columns array.
@@ -74,5 +81,33 @@ abstract class KaveretMigration extends Migration {
         $row->{$date_field} = drupal_json_encode($date_data);
       }
     }
+  }
+
+  function prepare($entity, $row) {
+    if (empty($this->translate)) {
+      return;
+    }
+
+    // Create a translation for the term.
+    $name = $row->{$this->translate . '_name'};
+    $translations = array($this->translate => $name);
+    $translation_set = i18n_translation_set_create('taxonomy_term', $this->bundle);
+    $translation_set
+      ->reset_translations($translations)
+      ->save(TRUE);
+
+    // Create the translated term.
+    $vocabularies = taxonomy_vocabulary_get_names();
+    $term = (object) array(
+      'name' => $name,
+      'vid' => $vocabularies['offer_categories']->vid,
+      'language' => $this->translate,
+      'i18n_tsid' => $translation_set->tsid,
+    );
+    taxonomy_term_save($term);
+
+    // Connect the term with its translation by setting the translation ID on
+    // the original term.
+    $entity->i18n_tsid = $translation_set->tsid;
   }
 }

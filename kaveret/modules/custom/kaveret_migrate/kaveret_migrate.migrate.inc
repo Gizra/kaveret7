@@ -6,10 +6,11 @@
 class KaveretOfferCategoriesTerms extends KaveretMigration {
   public $entityType = 'taxonomy_term';
   public $bundle = 'offer_categories';
+  public $translate = 'he';
 }
 
 /**
- * Migrate "Offer" categories terms.
+ * Migrate "Offer" statuses terms.
  */
 class KaveretOfferStatusesTerms extends KaveretMigration {
   public $entityType = 'taxonomy_term';

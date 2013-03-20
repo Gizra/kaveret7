@@ -1,5 +1,6 @@
 name = Kaveret accounting
 core = 7.x
 package = Kaveret
+php = 5.2.4
 dependencies[] = mcapi
 features[features_api][] = api:1
