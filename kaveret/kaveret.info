@@ -40,6 +40,7 @@ dependencies[] = fboauth
 dependencies[] = features
 dependencies[] = i18n
 dependencies[] = i18n_menu
+dependencies[] = i18n_taxonomy
 dependencies[] = jquery_update
 dependencies[] = mcapi
 dependencies[] = mcapi_forms
