@@ -2,6 +2,8 @@
 
 #main-menu {
   position: absolute;
+  width: 50px;
+  z-index: 50;
 
   .menu > li {
     display: block;
@@ -17,6 +19,7 @@
 
       .dropdown-menu {
         display: block;
+        background: white;
       }
     }
   }
