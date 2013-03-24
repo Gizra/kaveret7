@@ -21,7 +21,10 @@ function kaveret_accounting_transfer_content_type_render($subtype, $conf, $args,
 
   $block = new stdClass();
   $block->module = 'kaveret_accounting';
-  $block->title = '';
+
+  // Get the Beez balance.
+  $totals = transaction_totals($account->uid, 'bz');
+  $block->title = t('Transfer') . ' <span class="balance">' . t('My Beez: BZ @amount', array('@amount' => $totals->balance)). '</span>';
 
   $form = mcapi_get_form('1stparty');
 
