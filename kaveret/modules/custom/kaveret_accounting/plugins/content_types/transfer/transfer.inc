@@ -22,7 +22,37 @@ function kaveret_accounting_transfer_content_type_render($subtype, $conf, $args,
   $block = new stdClass();
   $block->module = 'kaveret_accounting';
   $block->title = '';
-  $block->content = mcapi_get_form('1stparty');
+
+  $form = mcapi_get_form('1stparty');
+
+  // Use this oppurtunity to alter the form.
+  $template = array(
+    '[mcapiform:direction]',
+    '[mcapiform:worth]',
+    '[mcapiform:secondperson]',
+    '[mcapiform:transaction_purpose]',
+  );
+  $form['#template'] = implode('', $template);
+
+  $form['direction']['outgoing']['#title'] = t('Pay');
+  $form['direction']['#title'] = t('I want to');
+  $form['direction']['#strip'] = FALSE;
+
+  $form['worth'][LANGUAGE_NONE]['#strip'] = FALSE;
+  $form['worth'][LANGUAGE_NONE]['#title'] = t('Amount BZ');
+  $form['worth'][LANGUAGE_NONE]['#description'] = '';
+
+  $form['secondperson']['#strip'] = FALSE;
+  $form['secondperson']['#title'] = t('To');
+
+  $form['transaction_purpose'][LANGUAGE_NONE]['#strip'] = FALSE;
+  $form['transaction_purpose'][LANGUAGE_NONE][0]['value']['#description'] = '';
+  $form['transaction_purpose'][LANGUAGE_NONE][0]['value']['#size'] = 23;
+
+  $form['buttons']['#prefix'] = '<div class="actions">';
+  $form['buttons']['#suffix'] = '</div>';
+
+  $block->content = $form;
   return $block;
 }
 
