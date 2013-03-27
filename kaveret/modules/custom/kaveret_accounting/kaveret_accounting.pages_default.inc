@@ -125,14 +125,11 @@ function kaveret_accounting_default_page_manager_pages() {
     $pane = new stdClass();
     $pane->pid = 'new-2';
     $pane->panel = 'middle';
-    $pane->type = 'block';
-    $pane->subtype = 'mcapi_index_views-balance_history';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'recent_activities-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
+    $pane->configuration = array();
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
