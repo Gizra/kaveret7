@@ -44,7 +44,7 @@ function kaveret_accounting_transfer_content_type_render($subtype, $conf, $args,
   $form['direction']['#strip'] = FALSE;
 
   $form['worth'][LANGUAGE_NONE]['#strip'] = FALSE;
-  $form['worth'][LANGUAGE_NONE]['#title'] = t('Amount BZ');
+  $form['worth'][LANGUAGE_NONE]['#title'] = t('Amount');
   $form['worth'][LANGUAGE_NONE]['#description'] = '';
 
   $form['secondperson']['#strip'] = FALSE;

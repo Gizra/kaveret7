@@ -46,7 +46,7 @@ function kaveret_accounting_mcapicurrencies_default_alter(&$currencies) {
 50|1/2
 75|3/4',
       'delimiter' => ':',
-      'format' => '<span class="code">BZ</span><span class="quantity">[quantity]</span>',
+      'format' => '<span class="code">BZ</span><span class="quantity">BZ [quantity]</span>',
       'zero' => '',
     ),
     'additional_settings' => array(
