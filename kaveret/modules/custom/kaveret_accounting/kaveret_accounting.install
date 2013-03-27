@@ -15,7 +15,7 @@ function kaveret_accounting_install() {
     'type' => 'text',
     'entity_types' => array('transaction'),
     'cardinality' => 1,
-    'translatable' => TRUE,
+    'translatable' => FALSE,
     'locked' => FALSE,
   );
   $field = field_create_field($field);
@@ -24,7 +24,7 @@ function kaveret_accounting_install() {
     'bundle' => 'transaction',
     'entity_type' => 'transaction',
     'label' => t('Purpose'),
-    'description' => t('The purpose of the transaction.'),
+    'description' => '',
     'settings' => array(
       'max_length' => 255,
     ),
