@@ -56,6 +56,9 @@ function kaveret_accounting_transfer_content_type_render($subtype, $conf, $args,
   $form['buttons']['#prefix'] = '<div class="actions">';
   $form['buttons']['#suffix'] = '</div>';
 
+  // Javascript for toggling the secondperson label between "To" and "From".
+  $form['#attached']['js'][] = drupal_get_path('module', 'kaveret_accounting') . '/plugins/content_types/transfer/transfer.js';
+
   $block->content = $form;
   return $block;
 }
