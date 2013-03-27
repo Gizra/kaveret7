@@ -38,6 +38,8 @@ function kaveret_accounting_transfer_content_type_render($subtype, $conf, $args,
   $form['#template'] = implode('', $template);
 
   $form['direction']['outgoing']['#title'] = t('Pay');
+  $form['direction']['outgoing']['#weight'] = 10;
+  $form['direction']['incoming']['#weight'] = 20;
   $form['direction']['#title'] = t('I want to');
   $form['direction']['#strip'] = FALSE;
 

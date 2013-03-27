@@ -777,9 +777,9 @@ article.node-teaser .field-name-body {
 }
 /* line 99, ../sass/pages/_my_wallet.scss */
 .page-my-wallet #my-wallet-panel #mcapi-forms-form .control-label {
-  width: 100px;
+  width: 88px;
   text-align: right;
-  padding: 0 10px;
+  padding-right: 10px;
   font-size: 14px;
   font-weight: bold;
 }
