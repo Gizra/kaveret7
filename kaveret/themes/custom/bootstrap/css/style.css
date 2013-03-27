@@ -6,14 +6,10 @@
   border: none;
 }
 /* line 9, ../sass/_header.scss */
-#navbar .navbar-inner .user-picture {
-  margin-top: -15px;
-}
-/* line 13, ../sass/_header.scss */
 #navbar .navbar-inner #search-block-form {
   margin: 0;
 }
-/* line 19, ../sass/_header.scss */
+/* line 15, ../sass/_header.scss */
 #navbar .navbar-inner .space-menu .dropdown-toggle {
   margin-left: 10px;
   background-color: #f9ab17;
@@ -22,21 +18,21 @@
   font-weight: bold;
   text-transform: none;
 }
-/* line 27, ../sass/_header.scss */
+/* line 23, ../sass/_header.scss */
 #navbar .navbar-inner .space-menu .dropdown-toggle .caret {
   display: block;
   margin: 0 auto;
 }
-/* line 36, ../sass/_header.scss */
+/* line 32, ../sass/_header.scss */
 #navbar .navbar-inner .social-links li {
   padding: 0 5px;
   border-right: 1px solid #c8c7c7;
 }
-/* line 40, ../sass/_header.scss */
+/* line 36, ../sass/_header.scss */
 #navbar .navbar-inner .social-links li.last {
   border-right: none;
 }
-/* line 45, ../sass/_header.scss */
+/* line 41, ../sass/_header.scss */
 #navbar .navbar-inner .social-links a {
   margin: 2px 2px;
   color: transparent;
@@ -45,24 +41,24 @@
   padding: 0;
   background: url("../images/sprites.png") no-repeat;
 }
-/* line 54, ../sass/_header.scss */
+/* line 50, ../sass/_header.scss */
 #navbar .navbar-inner .social-links a.wordpress {
   background-position: -75px -100px;
 }
-/* line 58, ../sass/_header.scss */
+/* line 54, ../sass/_header.scss */
 #navbar .navbar-inner .social-links a.facebook {
   background-position: 0 -100px;
 }
-/* line 62, ../sass/_header.scss */
+/* line 58, ../sass/_header.scss */
 #navbar .navbar-inner .social-links a.twitter {
   background-position: -25px -100px;
 }
-/* line 66, ../sass/_header.scss */
+/* line 62, ../sass/_header.scss */
 #navbar .navbar-inner .social-links a.email {
   background-position: -50px -100px;
 }
 
-/* line 73, ../sass/_header.scss */
+/* line 69, ../sass/_header.scss */
 #navbar-second .navbar-inner {
   background: #fbf5e9;
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZiZjVlOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjIlIiBzdG9wLWNvbG9yPSIjZmRmN2UxIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMyUiIHN0b3AtY29sb3I9IiNmZGY2ZTYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI3JSIgc3RvcC1jb2xvcj0iI2ZkZjVlOCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjI1JSIgc3RvcC1jb2xvcj0iI2ZmZmFmNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQzJSIgc3RvcC1jb2xvcj0iI2ZlZmVmZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU1JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjgyJSIgc3RvcC1jb2xvcj0iI2ZlZjlmMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijg1JSIgc3RvcC1jb2xvcj0iI2ZkZjllZSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjkzJSIgc3RvcC1jb2xvcj0iI2ZlZjZlOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk3JSIgc3RvcC1jb2xvcj0iI2ZjZjVlMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijk4JSIgc3RvcC1jb2xvcj0iI2ZiZjhlOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmYzZTMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
@@ -77,26 +73,26 @@
   height: 60px;
   box-shadow: none;
 }
-/* line 90, ../sass/_header.scss */
+/* line 86, ../sass/_header.scss */
 #navbar-second .navbar-inner .nav > li, #navbar-second .navbar-inner ul.menu > li {
   border-left: 1px solid #fecf7d;
   margin: 0;
   padding: 0;
 }
-/* line 95, ../sass/_header.scss */
+/* line 91, ../sass/_header.scss */
 #navbar-second .navbar-inner .nav > li.last, #navbar-second .navbar-inner ul.menu > li.last {
   border-right: 1px solid #fecf7d;
 }
-/* line 99, ../sass/_header.scss */
+/* line 95, ../sass/_header.scss */
 #navbar-second .navbar-inner .nav > li > a, #navbar-second .navbar-inner ul.menu > li > a {
   color: #9f2772;
   text-transform: none;
 }
-/* line 103, ../sass/_header.scss */
+/* line 99, ../sass/_header.scss */
 #navbar-second .navbar-inner .nav > li > a.offers, #navbar-second .navbar-inner ul.menu > li > a.offers {
   color: #31477f;
 }
-/* line 107, ../sass/_header.scss */
+/* line 103, ../sass/_header.scss */
 #navbar-second .navbar-inner .nav > li > a .caret, #navbar-second .navbar-inner ul.menu > li > a .caret {
   display: block;
   margin: auto;
@@ -106,40 +102,42 @@
   padding: 0;
   border: none;
 }
-/* line 117, ../sass/_header.scss */
+/* line 113, ../sass/_header.scss */
 #navbar-second .navbar-inner .nav > li > a.active, #navbar-second .navbar-inner .nav > li > a:hover, #navbar-second .navbar-inner ul.menu > li > a.active, #navbar-second .navbar-inner ul.menu > li > a:hover {
   background-color: white;
   height: 28px;
 }
-/* line 123, ../sass/_header.scss */
+/* line 119, ../sass/_header.scss */
 #navbar-second .navbar-inner .nav > li:hover .dropdown-menu, #navbar-second .navbar-inner ul.menu > li:hover .dropdown-menu {
   display: block;
 }
-/* line 127, ../sass/_header.scss */
+/* line 123, ../sass/_header.scss */
 #navbar-second .navbar-inner .nav > li .dropdown-menu, #navbar-second .navbar-inner ul.menu > li .dropdown-menu {
   margin-top: -1px;
 }
-/* line 133, ../sass/_header.scss */
+/* line 129, ../sass/_header.scss */
 #navbar-second .navbar-inner ul.menu > li a {
   color: #31477f;
 }
-/* line 137, ../sass/_header.scss */
+/* line 133, ../sass/_header.scss */
 #navbar-second .navbar-inner .user-details {
   width: 200px;
   color: #31477f;
   padding-top: 10px;
 }
-/* line 142, ../sass/_header.scss */
+/* line 138, ../sass/_header.scss */
 #navbar-second .navbar-inner .user-details .username {
   font-weight: bold;
   font-size: 16px;
+  float: left;
+  margin-left: 10px;
 }
-/* line 148, ../sass/_header.scss */
+/* line 146, ../sass/_header.scss */
 #navbar-second .navbar-inner .facebook-connect {
   margin: 23px 20px 0;
 }
 
-/* line 155, ../sass/_header.scss */
+/* line 153, ../sass/_header.scss */
 .breadcrumbs .arrow {
   background: url("../images/sprites.png") no-repeat -25px -125px;
   width: 8px;
