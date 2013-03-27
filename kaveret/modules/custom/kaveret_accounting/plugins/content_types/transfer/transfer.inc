@@ -49,6 +49,8 @@ function kaveret_accounting_transfer_content_type_render($subtype, $conf, $args,
 
   $form['secondperson']['#strip'] = FALSE;
   $form['secondperson']['#title'] = t('To');
+  $form['secondperson']['#attributes']['placeholder'] = $form['secondperson']['#description'];
+  $form['secondperson']['#description'] = '';
 
   $form['transaction_purpose'][LANGUAGE_NONE]['#strip'] = FALSE;
   $form['transaction_purpose'][LANGUAGE_NONE][0]['value']['#size'] = 23;

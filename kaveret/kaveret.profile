@@ -285,6 +285,9 @@ function kaveret_set_variables() {
       'node' => 'node',
       'taxonomy_term' => 'taxonomy_term',
     ),
+
+    // MCAPI settings.
+    'user_chooser_threshhold' => 1,
   );
 
   foreach ($variables as $key => $value) {
