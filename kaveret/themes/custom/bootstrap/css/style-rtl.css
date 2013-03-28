@@ -109,7 +109,7 @@ div.contextual-links-wrapper {
 }
 
 /*
-* My wallet
+* My wallet form
 */
 
 #mcapi-forms-form input,
@@ -127,12 +127,12 @@ div.contextual-links-wrapper {
   float: right;
 }
 
-.control-label {
+#mcapi-forms-form .control-label {
   text-align: right;
   float: right;
 }
 
-.actions {
+#mcapi-forms-form .actions {
   text-align: left;
 }
 
