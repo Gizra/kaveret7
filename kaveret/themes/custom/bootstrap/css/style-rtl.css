@@ -163,3 +163,6 @@ div.contextual-links-wrapper {
 html.js input.form-autocomplete {
   background-position: 5px 8px;
 }
+.panel-2col-stacked .panel-col-first{
+  float: right;
+}
