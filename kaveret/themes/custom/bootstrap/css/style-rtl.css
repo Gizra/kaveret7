@@ -166,3 +166,8 @@ html.js input.form-autocomplete {
 .panel-2col-stacked .panel-col-first{
   float: right;
 }
+
+.form-type-user-chooser-few .control-label {
+  width: 85px !important;
+  margin-left: 29px;
+}
