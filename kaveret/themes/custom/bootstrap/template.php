@@ -139,7 +139,7 @@ function bootstrap_preprocess_page(&$variables) {
 
   // Header menus.
   $variables['space_menu'] = menu_tree('space-menu');
-  $variables['social_links'] = menu_tree('social-menu');
+  $variables['facebook_links'] = fboauth_action_display('connect');
   $variables['navigation_menu'] = menu_tree('navigation-menu');
 
   // Get the logo filename according to the language.

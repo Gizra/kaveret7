@@ -1,6 +1,6 @@
 #navbar .navbar-inner {
   padding-top: 30px;
-  background-color: white;
+  background-color: #fdf4e5;
   margin-bottom: 0;
   border: none;
 }
@@ -280,8 +280,8 @@ form .form-required {
   }
 }
 .navbar .logo {
+  float: left;
   margin-top: 5px;
-  margin-right: 10px;
 }
 
 #site-name {

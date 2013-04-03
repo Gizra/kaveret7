@@ -35,3 +35,11 @@ function kaveret_general_get_breadcrumbs() {
 
   return implode(' <span class="arrow"></span> ', $items);
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function kaveret_general_form_search_block_form_alter(&$form, &$form_state) {
+
+  dpm($form);
+}
