@@ -2,10 +2,12 @@
 /**
  * @file
  * kaveret.features.inc
+ * kaveret_general.features.inc
  */
 
 /**
  * Implements hook_image_default_styles().
+ * Implements hook_ctools_plugin_api().
  */
 function kaveret_image_default_styles() {
   $styles = array();
@@ -33,4 +35,9 @@ function kaveret_image_default_styles() {
   );
 
   return $styles;
+function kaveret_general_ctools_plugin_api() {
+  list($module, $api) = func_get_args();
+  if ($module == "panels_mini" && $api == "panels_default") {
+    return array("version" => "1");
+  }
 }

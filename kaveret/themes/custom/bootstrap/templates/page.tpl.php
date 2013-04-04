@@ -18,9 +18,6 @@
           <?php if (!empty($page['navigation'])): ?>
             <?php print render($page['navigation']); ?>
           <?php endif; ?>
-          <div class="social-links <?php print $pull_class; ?>">
-            <?php print $facebook_links; ?>
-          </div>
           <div class="space-menu <?php print $alter_pull_class; ?>">
             <?php print render($space_menu); ?>
           </div>
