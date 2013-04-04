@@ -148,13 +148,23 @@
     left: -20px;
   }
 }
+#navbar .logo {
+  float: left;
+}
+body.not-logged-in #navbar .logo {
+  margin-top: 11px;
+}
 #navbar .content-search #edit-search-block-form--2 {
+  margin-top: -5px;
   margin-left: 20px;
   width: 260px;
   -moz-border-radius: 0 0 0 0;
   -webkit-border-radius: 0 0 0 0;
   -khtml-border-radius: 0 0 0 0;
   border-radius: 0 0 0 0;
+}
+#navbar .content-search .btn {
+  margin-top: -5px;
 }
 #navbar #user-login-form a {
   color: #143175;
@@ -165,7 +175,6 @@
 }
 #navbar #user-login-form .col-middle {
   width: 205px;
-  height: 70px;
 }
 #navbar #user-login-form .control-group {
   margin: 0;
@@ -240,6 +249,15 @@
   float: right;
 }
 
+.pane-user-picture {
+  margin-left: -10px;
+  float: right;
+}
+.pane-user-picture img {
+  width: 37px;
+  height: 37px;
+}
+
 form .control-group a {
   margin-left: 22px;
   margin-top: 6px;
@@ -256,11 +274,6 @@ form .form-required {
     padding-top: 60px;
   }
 }
-.navbar .logo {
-  float: left;
-  margin-top: 5px;
-}
-
 #site-name {
   line-height: 1;
   margin: 0;
