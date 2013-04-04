@@ -1,5 +1,27 @@
 <?php
 
+
+/**
+ * User login block preprocess.
+ */
+function bootstrap_preprocess_user_login_block(&$variables) {
+  $variables['name'] = render($variables['form']['name']);
+  $variables['pass'] = render($variables['form']['pass']);
+  $variables['submit'] = render($variables['form']['actions']);
+  $variables['rendered'] = drupal_render_children($variables['form']);
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function bootstrap_form_user_login_block_alter(&$form, $form_state) {
+  $form['name']['#title_display'] = 'invisible';
+  $form['name']['#attributes']['placeholder'] = t('User Name');
+
+  $form['pass']['#title_display'] = 'invisible';
+  $form['pass']['#attributes']['placeholder'] = t('Password');
+}
+
 /**
  * Implements hook_form_alter().
  */

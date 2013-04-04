@@ -96,6 +96,40 @@ function kaveret_general_default_panels_mini() {
     $pane->locks = array();
     $display->content['new-3'] = $pane;
     $display->panels['middle'][2] = 'new-3';
+    $pane = new stdClass();
+    $pane->pid = 'new-4';
+    $pane->panel = 'middle';
+    $pane->type = 'block';
+    $pane->subtype = 'menu-space-menu';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'role',
+          'settings' => array(
+            'rids' => array(
+              0 => 2,
+            ),
+          ),
+          'context' => 'logged-in-user',
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-4'] = $pane;
+    $display->panels['middle'][3] = 'new-4';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-2';
   $mini->display = $display;

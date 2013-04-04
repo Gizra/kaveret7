@@ -263,6 +263,81 @@
     left: -20px;
   }
 }
+#navbar .content-search #edit-search-block-form--2 {
+  margin-left: 20px;
+  width: 260px;
+  -moz-border-radius: 0 0 0 0;
+  -webkit-border-radius: 0 0 0 0;
+  -khtml-border-radius: 0 0 0 0;
+  border-radius: 0 0 0 0;
+}
+#navbar .content-search .btn {
+  width: 50px;
+  height: 30px;
+  position: absolute;
+  margin-left: -35px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  -moz-border-radius: 0 0 0 0;
+  -webkit-border-radius: 0 0 0 0;
+  -khtml-border-radius: 0 0 0 0;
+  border-radius: 0 0 0 0;
+}
+#navbar #user-login-form .control-group {
+  margin: 0;
+  padding: 0;
+}
+#navbar #user-login-form __ul {
+  float: left;
+  font-size: 12px;
+  list-style: none;
+  position: absolute;
+  margin-left: 668px;
+  margin-top: 35px;
+}
+#navbar #user-login-form __ul li {
+  line-height: 15px;
+}
+#navbar #user-login-form .form-text {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  height: 28px;
+  -moz-border-radius: 0 0 0 0;
+  -webkit-border-radius: 0 0 0 0;
+  -khtml-border-radius: 0 0 0 0;
+  border-radius: 0 0 0 0;
+}
+#navbar #user-login-form #edit-name,
+#navbar #user-login-form #edit-pass {
+  float: left;
+}
+#navbar #user-login-form #edit-name {
+  margin-left: 40px;
+}
+#navbar #user-login-form #edit-pass {
+  margin-left: 10px;
+}
+#navbar #user-login-form .btn {
+  background: #b11918;
+  color: #fff;
+  margin-top: 0;
+  margin-left: 10px;
+  padding: 0;
+  float: left;
+  width: 70px;
+  height: 29px;
+  border: 1px solid #000000;
+  -moz-border-radius: 0 0 0 0;
+  -webkit-border-radius: 0 0 0 0;
+  -khtml-border-radius: 0 0 0 0;
+  border-radius: 0 0 0 0;
+}
+#navbar .facebook-action-connect {
+  float: left;
+}
+
 form .control-group a {
   margin-left: 22px;
   margin-top: 6px;

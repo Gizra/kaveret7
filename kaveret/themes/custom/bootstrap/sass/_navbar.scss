@@ -1,0 +1,83 @@
+#navbar {
+
+  .content-search {
+
+    #edit-search-block-form--2 {
+      margin-left: 20px;
+      width: 260px;
+      @include rounded-corners(0, 0, 0 ,0);
+    }
+
+    .btn {
+      width: 50px;
+      height: 30px;
+      position: absolute;
+      margin-left: -35px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      @include rounded-corners(0, 0, 0 ,0);
+    }
+  }
+
+  #user-login-form {
+
+    .control-group{
+      margin: 0;
+      padding: 0;
+    }
+
+    __ul {
+      float: left; // LTR
+      font-size: 12px;
+      list-style: none;
+      position: absolute;
+      margin-left: 668px;
+      margin-top: 35px;
+
+      li {
+        line-height: 15px;
+      }
+    }
+
+    .form-text {
+      margin: 0;
+      padding: 0;
+      width: 200px;
+      height: 28px;
+      @include rounded-corners(0, 0, 0 ,0);
+    }
+
+    #edit-name,
+    #edit-pass {
+      float: left; // LTR
+    }
+
+    #edit-name {
+      margin-left: 40px; // LTR
+    }
+
+    #edit-pass {
+      margin-left: 10px; // LTR
+    }
+
+    // Login button
+    .btn {
+      background: #b11918;
+      color: #fff;
+      margin-top: 0;
+      margin-left: 10px;
+      padding: 0;
+      float: left;
+      width: 70px;
+      height: 29px;
+      border: 1px solid #000000;
+      @include rounded-corners(0, 0, 0 ,0);
+    }
+  }
+
+  .facebook-action-connect {
+    float: left;
+  }
+}
+

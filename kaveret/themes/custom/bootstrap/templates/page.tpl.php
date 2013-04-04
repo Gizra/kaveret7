@@ -18,10 +18,6 @@
           <?php if (!empty($page['navigation'])): ?>
             <?php print render($page['navigation']); ?>
           <?php endif; ?>
-          <div class="space-menu <?php print $alter_pull_class; ?>">
-            <?php print render($space_menu); ?>
-          </div>
-
         </nav>
       </div>
     </div>
