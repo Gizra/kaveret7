@@ -2,7 +2,6 @@
 
   .content-search {
 
-
     #edit-search-block-form--2 {
       margin-left: 20px;
       width: 260px;
@@ -21,12 +20,10 @@
       float: left; // LTR
     }
 
-
     .col-middle {
-      width: 200px;
-      height: 80px;
+      width: 205px;
+      height: 70px;
     }
-
 
     .control-group{
       margin: 0;
@@ -35,7 +32,7 @@
 
     ul {
       font-size: 13px;
-      margin-left: 10px;
+      margin-left: 10px; // LTR
       padding: 0;
       list-style: none;
 
@@ -80,7 +77,35 @@
   }
 
   .facebook-action-connect {
-    float: left;
+    float: left; // LTR
+  }
+
+  .navbar-inner {
+    padding-top: 30px;
+    background-color: #fdf4e5;
+    margin-bottom: 0;
+    border: none;
+
+    .pane-menu-space-menu {
+
+      .dropdown-toggle {
+        margin-left: 10px; //LTR
+        background-color: #f9ab17;
+        padding: 5px;
+        color: white;
+        font-weight: bold;
+        text-transform: none;
+
+        .caret {
+          display: block;
+          margin: 0 auto;
+        }
+      }
+    }
   }
 }
-
+.navbar {
+  .nav {
+    float: right; // LTR
+  }
+}
