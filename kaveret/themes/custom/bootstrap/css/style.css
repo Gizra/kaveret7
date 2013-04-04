@@ -271,39 +271,34 @@
   -khtml-border-radius: 0 0 0 0;
   border-radius: 0 0 0 0;
 }
-#navbar .content-search .btn {
-  width: 50px;
-  height: 30px;
-  position: absolute;
-  margin-left: -35px;
-  cursor: pointer;
-  border: none;
-  background: none;
-  -moz-border-radius: 0 0 0 0;
-  -webkit-border-radius: 0 0 0 0;
-  -khtml-border-radius: 0 0 0 0;
-  border-radius: 0 0 0 0;
+#navbar #user-login-form a {
+  color: #143175;
+}
+#navbar #user-login-form .col-first,
+#navbar #user-login-form .col-middle {
+  float: left;
+}
+#navbar #user-login-form .col-middle {
+  width: 200px;
+  height: 80px;
 }
 #navbar #user-login-form .control-group {
   margin: 0;
   padding: 0;
 }
-#navbar #user-login-form __ul {
-  float: left;
-  font-size: 12px;
+#navbar #user-login-form ul {
+  font-size: 13px;
+  margin-left: 10px;
+  padding: 0;
   list-style: none;
-  position: absolute;
-  margin-left: 668px;
-  margin-top: 35px;
 }
-#navbar #user-login-form __ul li {
-  line-height: 15px;
+#navbar #user-login-form ul li {
+  line-height: 17px;
 }
 #navbar #user-login-form .form-text {
   margin: 0;
-  padding: 0;
-  width: 200px;
-  height: 28px;
+  width: 180px;
+  height: 20px;
   -moz-border-radius: 0 0 0 0;
   -webkit-border-radius: 0 0 0 0;
   -khtml-border-radius: 0 0 0 0;
@@ -314,7 +309,7 @@
   float: left;
 }
 #navbar #user-login-form #edit-name {
-  margin-left: 40px;
+  margin-left: 30px;
 }
 #navbar #user-login-form #edit-pass {
   margin-left: 10px;
@@ -327,7 +322,7 @@
   padding: 0;
   float: left;
   width: 70px;
-  height: 29px;
+  height: 30px;
   border: 1px solid #000000;
   -moz-border-radius: 0 0 0 0;
   -webkit-border-radius: 0 0 0 0;

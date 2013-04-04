@@ -142,6 +142,10 @@ function bootstrap_preprocess_page(&$variables) {
   $variables['secondary_nav'] = menu_tree(variable_get('menu_secondary_links_source', 'user-menu'));
   $variables['secondary_nav']['#theme_wrappers'] = array('menu_tree__secondary');
 
+  // Header menus.
+  $variables[''] = menu_tree('space-menu');
+  $variables['facebook_links'] = fboauth_action_display('connect');
+  $variables['navigation_menu'] = menu_tree('navigation-menu');
 
   // Get the logo filename according to the language.
   $logo = theme('image', array('path' => path_to_theme() . '/images/logo-' . $language->language . '.png'));
