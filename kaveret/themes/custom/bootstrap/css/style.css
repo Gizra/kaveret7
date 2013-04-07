@@ -148,6 +148,9 @@
     left: -20px;
   }
 }
+#navbar .nav {
+  float: right;
+}
 #navbar .logo {
   float: left;
 }
@@ -244,21 +247,15 @@ body.not-logged-in #navbar .logo {
   display: block;
   margin: 0 auto;
 }
-
-.navbar .nav {
-  float: right;
-}
-
-.pane-user-picture {
+#navbar .pane-user-picture {
   margin-left: -10px;
   float: right;
 }
-.pane-user-picture img {
+#navbar .pane-user-picture img {
   width: 37px;
   height: 37px;
 }
-
-.pane-fboauth-login img {
+#navbar .pane-fboauth-login img {
   width: 100px;
   height: 30px;
 }

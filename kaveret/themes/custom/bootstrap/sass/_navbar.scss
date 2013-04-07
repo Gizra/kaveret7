@@ -1,5 +1,9 @@
 #navbar {
 
+  .nav {
+    float: right; // LTR
+  }
+
   .logo {
     float: left; //LTR
 
@@ -114,25 +118,23 @@
       }
     }
   }
-}
-.navbar {
-  .nav {
-    float: right; // LTR
-  }
-}
-.pane-user-picture {
-  margin-left: -10px; // LTR
-  float: right;
 
-  img {
-    width: 37px;
-    height: 37px;
+  .pane-user-picture {
+    margin-left: -10px; // LTR
+    float: right;
+
+    img {
+      width: 37px;
+      height: 37px;
+    }
+  }
+  .pane-fboauth-login {
+
+    img {
+      width: 100px;
+      height: 30px;
+    }
   }
 }
-.pane-fboauth-login {
-  img {
-    width: 100px;
-    height: 30px;
-  }
-}
+
 
