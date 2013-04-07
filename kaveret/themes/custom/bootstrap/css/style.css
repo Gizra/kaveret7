@@ -258,6 +258,11 @@ body.not-logged-in #navbar .logo {
   height: 37px;
 }
 
+.pane-fboauth-login img {
+  width: 100px;
+  height: 30px;
+}
+
 form .control-group a {
   margin-left: 22px;
   margin-top: 6px;
