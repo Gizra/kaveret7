@@ -119,6 +119,14 @@ function bootstrap_preprocess_page(&$variables) {
 
   drupal_set_title(variable_get('site_slogan'));
 
+  // Show titles ...
+  $variables['hide_title'] = TRUE;
+  $item = menu_get_item();
+  if ($item['path'] == 'node/add/offer' || $item['path'] == 'node/add/request') {
+    $variables['hide_title'] = FALSE;
+  }
+
+
   // Add information about the number of sidebars.
   if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
     $variables['columns'] = 3;

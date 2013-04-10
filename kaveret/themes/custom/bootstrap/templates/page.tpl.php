@@ -54,9 +54,11 @@
       </div>
 
       <a id="main-content"></a>
-      <?php print render($title_prefix); ?>
-
-      <?php print render($title_suffix); ?>
+      <?php if (empty($hide_title)): ?>
+        <?php print render($title_prefix); ?>
+        <h1> <?php print $title; ?> </h1>
+        <?php print render($title_suffix); ?>
+      <?php endif; ?>
       <?php print $messages; ?>
       <?php if (!empty($tabs)): ?>
         <?php print render($tabs); ?>
