@@ -304,10 +304,11 @@ function kaveret_set_variables() {
 
     // MCAPI settings.
     'user_chooser_threshhold' => 1,
-    'mcapi_signatures_1stparty' => Array
-    (
-      'participants' => 1,
-      'countersignatories' => array('notify' => 1) )
+    'mcapi_signatures_1stparty' => array(
+      'participants' => TRUE,
+      'countersignatories' => '',
+      'notify' => TRUE,
+    ),
   );
 
   foreach ($variables as $key => $value) {
