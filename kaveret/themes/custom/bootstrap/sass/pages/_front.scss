@@ -1,1 +1,12 @@
 @import "mixins";
+
+.panel-display {
+
+  .panel-panel {
+    margin-left: -30px;
+    width: 1000px;
+  }
+  .pane-my-content-panel-pane-my-content {
+    margin-left: 40px;
+  }
+}
