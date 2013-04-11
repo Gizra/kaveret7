@@ -4,38 +4,6 @@
  * @file
  */
 
-include_once 'kaveret_accounting.features.inc';
-
-/**
- * Implements hook_ctools_plugin_directory().
- */
-function kaveret_accounting_ctools_plugin_directory($module, $plugin) {
-  if ($module == 'ctools') {
-    return 'plugins/' . $plugin;
-  }
-}
-
-/**
- * Implements hook_views_data().
- */
-function kaveret_accounting_views_data() {
-  $data['mcapi_transactions']['description'] = array(
-    'title' => t('Description'),
-    'help' => t('Display a description of a transaction.'),
-    'real field' => 'xid',
-    'field' => array(
-      'handler' => 'kaveret_accounting_transaction_description',
-    ),
-  );
-  return $data;
-}
-
-/**
- * Implements hook_mcapiforms_default_alter().
- */
-function kaveret_accounting_mcapiforms_default_alter($forms) {
-  $forms['1stparty']->data['direction']['widget'] = 'radios';
-}
 
 /**
  * Implements hook_mcapicurrencies_default().
@@ -61,7 +29,7 @@ function kaveret_accounting_mcapicurrencies_default_alter(&$currencies) {
 50|1/2
 75|3/4',
       'delimiter' => ':',
-      'format' => '<span class="code">BZ</span><span class="quantity">[quantity]</span>',
+      'format' => '[quantity]Bz',
       'zero' => '',
     ),
     'additional_settings' => array(
@@ -102,7 +70,6 @@ function kaveret_accounting_mcapicurrencies_default_alter(&$currencies) {
     ),
   );
 
-  // Override the other default currencies.
-  $currencies = array($mcapicurrency->currcode => $mcapicurrency);
+  $currencies[$mcapicurrency->currcode] = $mcapicurrency;
   return $currencies;
 }

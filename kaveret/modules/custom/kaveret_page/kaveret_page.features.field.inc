@@ -1,23 +1,25 @@
 <?php
 /**
  * @file
- * kaveret_terms.features.field.inc
+ * kaveret_page.features.field.inc
  */
 
 /**
  * Implements hook_field_default_fields().
  */
-function kaveret_terms_field_default_fields() {
+function kaveret_page_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'taxonomy_term-offer_categories-name_field'.
-  $fields['taxonomy_term-offer_categories-name_field'] = array(
+  // Exported field: 'node-page-body'.
+  $fields['node-page-body'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'name_field',
+      'entity_types' => array(
+        0 => 'node',
+      ),
+      'field_name' => 'body',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -33,53 +35,57 @@ function kaveret_terms_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'max_length' => 255,
-      ),
-      'translatable' => '1',
-      'type' => 'text',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'text_with_summary',
     ),
     'field_instance' => array(
-      'bundle' => 'offer_categories',
+      'bundle' => 'page',
       'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
+          'module' => 'text',
           'settings' => array(),
-          'type' => 'hidden',
+          'type' => 'text_default',
+          'weight' => 0,
+        ),
+        'teaser' => array(
+          'label' => 'hidden',
+          'module' => 'text',
+          'settings' => array(
+            'trim_length' => 600,
+          ),
+          'type' => 'text_summary_or_trimmed',
           'weight' => 0,
         ),
       ),
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'name_field',
-      'label' => 'Name',
-      'required' => TRUE,
+      'entity_type' => 'node',
+      'field_name' => 'body',
+      'label' => 'Body',
+      'required' => FALSE,
       'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'hide_label' => array(
-          'entity' => FALSE,
-          'page' => FALSE,
-        ),
-        'text_processing' => 0,
+        'display_summary' => TRUE,
+        'text_processing' => 1,
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'module' => 'text',
         'settings' => array(
-          'size' => 60,
+          'rows' => 20,
+          'summary_rows' => 5,
         ),
-        'type' => 'text_textfield',
-        'weight' => -5,
+        'type' => 'text_textarea_with_summary',
+        'weight' => -4,
       ),
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Name');
+  t('Body');
 
   return $fields;
 }

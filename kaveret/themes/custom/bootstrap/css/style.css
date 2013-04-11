@@ -52,16 +52,16 @@
 .footer .menu.nav a.main .caret {
   display: none;
 }
-.footer .menu.nav a.main.resources {
+.footer .menu.nav a.main.resource-exchange {
   background-position: 0 -50px;
 }
-.footer .menu.nav a.main.dreams {
+.footer .menu.nav a.main.dreams-accelerator {
   background-position: -24px -50px;
 }
 .footer .menu.nav a.main.learning-center {
   background-position: -72px -50px;
 }
-.footer .menu.nav a.main.communities {
+.footer .menu.nav a.main.groups {
   background-position: -48px -50px;
 }
 .footer .menu.nav a.main .dropdown-menu {
@@ -115,10 +115,10 @@
   height: 40px;
   background: url("../images/sprites.png");
 }
-#main-menu a.main.communities:after {
+#main-menu a.main.groups:after {
   background-position: -50px 0;
 }
-#main-menu a.main.dreams:after {
+#main-menu a.main.dreams-accelerator:after {
   background-position: -150px 0;
 }
 #main-menu a.main.learning-center:after {

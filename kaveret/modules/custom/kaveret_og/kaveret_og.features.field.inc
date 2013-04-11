@@ -35,9 +35,7 @@ function kaveret_og_field_default_fields() {
       ),
       'locked' => '0',
       'module' => 'text',
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-      ),
+      'settings' => array(),
       'translatable' => '0',
       'type' => 'text_with_summary',
     ),
@@ -70,7 +68,6 @@ function kaveret_og_field_default_fields() {
       'required' => FALSE,
       'settings' => array(
         'display_summary' => TRUE,
-        'entity_translation_sync' => FALSE,
         'text_processing' => 1,
         'user_register_form' => FALSE,
       ),
@@ -108,7 +105,6 @@ function kaveret_og_field_default_fields() {
           1 => 'Group',
         ),
         'allowed_values_function' => '',
-        'entity_translation_sync' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'list_boolean',
@@ -145,7 +141,6 @@ function kaveret_og_field_default_fields() {
       'label' => 'Group',
       'required' => FALSE,
       'settings' => array(
-        'entity_translation_sync' => FALSE,
         'user_register_form' => FALSE,
       ),
       'view modes' => array(

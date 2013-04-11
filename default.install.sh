@@ -1,6 +1,9 @@
 #!/bin/bash
 
-chmod 777 www/sites/default
+rm -rf www/
+mkdir www
+chmod 777 www
+
 bash scripts/build
 
 cd www

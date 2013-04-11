@@ -6,13 +6,10 @@
 class KaveretOfferCategoriesTerms extends KaveretMigration {
   public $entityType = 'taxonomy_term';
   public $bundle = 'offer_categories';
-
-  public $languages = array('he');
-  public $translated_fields = array('name_field' => 'Name');
 }
 
 /**
- * Migrate "Offer" statuses terms.
+ * Migrate "Offer" categories terms.
  */
 class KaveretOfferStatusesTerms extends KaveretMigration {
   public $entityType = 'taxonomy_term';
@@ -50,7 +47,9 @@ class KaveretOfferNodes extends KaveretMigration {
     $this
       ->addFieldMapping('field_image:source_dir')
       ->defaultValue(drupal_get_path('module', 'kaveret_migrate') . '/images');
-    $this->addFieldMapping('field_category', 'field_category');
+    $this
+      ->addFieldMapping('field_category', 'field_category')
+      ->sourceMigration('KaveretOfferCategoriesTerms');
   }
 }
 
@@ -85,7 +84,42 @@ class KaveretRequestNodes extends KaveretMigration {
     $this
       ->addFieldMapping('field_image:source_dir')
       ->defaultValue(drupal_get_path('module', 'kaveret_migrate') . '/images');
-    $this->addFieldMapping('field_category', 'field_category');
+    $this
+      ->addFieldMapping('field_category', 'field_category')
+      ->sourceMigration('KaveretOfferCategoriesTerms');
+  }
+}
+
+/**
+ * Migrate Page nodes.
+ */
+class KaveretPageNodes extends KaveretMigration {
+  public $csvColumns = array(
+    array('language', 'Language'),
+    array('path', 'Path'),
+    array('link_weight', 'Link weight'),
+    array('body', 'Body'),
+  );
+
+  public $entityType = 'node';
+  public $bundle = 'page';
+
+  public $dependencies = array(
+    'KaveretOfferCategoriesTerms',
+  );
+
+  public function __construct() {
+    parent::__construct();
+
+    $this->addFieldMapping('body', 'body')
+      ->arguments(array('format' => 'full_html'));;
+
+    $this
+      ->addFieldMapping('field_category', 'field_category')
+      ->sourceMigration('KaveretOfferCategoriesTerms');
+
+    $this->addFieldMapping('language', 'language');
+    $this->addFieldMapping('path', 'path');
   }
 }
 
@@ -151,68 +185,5 @@ class KaveretUsers extends Migration {
     // Create a MigrateSource object.
     $this->source = new MigrateSourceCSV(drupal_get_path('module', 'kaveret_migrate') . '/csv/' . $this->entityType . '/user.csv', $this->csvColumns, array('header_rows' => 1));
     $this->destination = new MigrateDestinationUser();
-  }
-}
-
-/**
- * Migrate transaction entities.
- */
-class KaveretTransaction extends KaveretTransactionMigration {
-
-  public $entityType = 'transaction';
-  public $bundle = 'transaction';
-
-  public $csvColumns = array(
-    array('id', 'Unique ID'),
-    array('payer', 'Payer'),
-    array('payee', 'Payee'),
-    array('type', 'Type'),
-    array('creator', 'Creator'),
-    array('created', 'Created'),
-    array('transaction_purpose', 'Purpose'),
-    array('currency', 'Currency'),
-    array('amount', 'Amount'),
-  );
-
-  public $dependencies = array(
-    'KaveretUsers',
-  );
-
-
-  public function __construct() {
-    parent::__construct();
-
-    $this->addFieldMapping('type', 'type');
-    $this->addFieldMapping('created', 'created');
-    $this->addFieldMapping('transaction_purpose', 'transaction_purpose');
-    $this
-      ->addFieldMapping('payer', 'payer')
-      ->sourceMigration('KaveretUsers');
-    $this
-      ->addFieldMapping('payee', 'payee')
-      ->sourceMigration('KaveretUsers');
-    $this
-      ->addFieldMapping('creator', 'creator')
-      ->sourceMigration('KaveretUsers');
-  }
-
-  public function prepare($entity, $row) {
-    // Set the worth value.
-    // TODO: See if it's possible to set it with ('worth:currcode', 'currency').
-    $worth = array(
-      'quantity' => $row->amount,
-      'currcode' => $row->currency,
-    );
-    $entity->worth = array(LANGUAGE_NONE => array($worth));
-  }
-
-
-  public function complete($entity, $row) {
-    // Re-set the created value, because it gets overridden, also when trying to
-    // set it with entity_save.
-    db_update('mcapi_transactions')
-      ->fields(array('created' => $row->created,))
-      ->condition('xid', $entity->xid)
-      ->execute();
   }
 }
