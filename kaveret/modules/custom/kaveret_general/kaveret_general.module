@@ -29,7 +29,7 @@ function kaveret_general_get_breadcrumbs() {
 
     case 'my-wallet':
       $items[] = "<span dir=\"$dir\">" . l(t('Resource Exchange'), '') . '</span>';
-      $items[] = "<span dir=\"$dir\">" . t('My Wallet') . '</span>';
+      $items[] = "<span dir=\"$dir\">" . t('My Treasure') . '</span>';
       break;
 
     case 'directory':
