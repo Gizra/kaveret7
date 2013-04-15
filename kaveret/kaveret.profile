@@ -489,7 +489,7 @@ function kaveret_menus_setup() {
 
 
 
-  // Create the footer links menu.
+  // Create the side links menu.
   $menu = array(
     'menu_name' => 'side-menu',
     'title' => 'Side menu',
@@ -498,12 +498,14 @@ function kaveret_menus_setup() {
   );
   menu_save($menu);
 
+/*
   // Add main menu links.
   $item = array(
     'link_title' => 'Resource Exchange',
     'link_path' => '<front>',
     'menu_name' => 'side-menu',
     'expanded' => TRUE,
+    'customized' => TRUE,
     'options' => array('attributes' => array('class' => array('main', 'resources'))),
     'weight' => 10,
     'language' => 'en',
@@ -535,6 +537,7 @@ function kaveret_menus_setup() {
     'link_title' => 'Dreams Accelerator',
     'link_path' => '<front>',
     'menu_name' => 'side-menu',
+    'customized' => TRUE,
     'expanded' => TRUE,
     'options' => array('attributes' => array('class' => array('main', 'dreams'))),
     'weight' => 20,
@@ -547,6 +550,7 @@ function kaveret_menus_setup() {
     'link_path' => '<front>',
     'menu_name' => 'side-menu',
     'expanded' => TRUE,
+    'customized' => TRUE,
     'options' => array('attributes' => array('class' => array('main', 'learning-center'))),
     'weight' => 30,
     'language' => 'en',
@@ -558,6 +562,7 @@ function kaveret_menus_setup() {
     'link_path' => '<front>',
     'menu_name' => 'side-menu',
     'expanded' => TRUE,
+    'customized' => TRUE,
     'options' => array('attributes' => array('class' => array('main', 'communities'))),
     'weight' => 40,
     'language' => 'en',
@@ -570,8 +575,9 @@ function kaveret_menus_setup() {
     'link_path' => '<front>',
     'menu_name' => 'side-menu',
     'expanded' => TRUE,
+    'customized' => TRUE,
     'options' => array('attributes' => array('class' => array('main', 'resources'))),
-    'weight' => 10,
+    'weight' => 50,
     'language' => 'he',
 
   );
@@ -583,7 +589,6 @@ function kaveret_menus_setup() {
     'menu_name' => 'side-menu',
     'plid' => $mlid,
     'customized' => TRUE,
-    'weight' => 20,
     'language' => 'he',
   );
   menu_link_save($item);
@@ -594,7 +599,6 @@ function kaveret_menus_setup() {
     'menu_name' => 'side-menu',
     'plid' => $mlid,
     'customized' => TRUE,
-    'weight' => 30,
     'language' => 'he',
   );
   menu_link_save($item);
@@ -604,8 +608,9 @@ function kaveret_menus_setup() {
     'link_path' => '<front>',
     'menu_name' => 'side-menu',
     'expanded' => TRUE,
+    'customized' => TRUE,
     'options' => array('attributes' => array('class' => array('main', 'dreams'))),
-    'weight' => 40,
+    'weight' => 60,
     'language' => 'he',
   );
   menu_link_save($item);
@@ -615,8 +620,9 @@ function kaveret_menus_setup() {
     'link_path' => '<front>',
     'menu_name' => 'side-menu',
     'expanded' => TRUE,
-    'options' => array('attributes' => array('class' => array('main', 'dreams'))),
-    'weight' => 50,
+    'customized' => TRUE,
+    'options' => array('attributes' => array('class' => array('main', 'learning-center'))),
+    'weight' => 70,
     'language' => 'he',
   );
   menu_link_save($item);
@@ -626,12 +632,13 @@ function kaveret_menus_setup() {
     'link_path' => '<front>',
     'menu_name' => 'side-menu',
     'expanded' => TRUE,
-    'options' => array('attributes' => array('class' => array('main', 'dreams'))),
-    'weight' => 60,
+    'customized' => TRUE,
+    'options' => array('attributes' => array('class' => array('main', 'communities'))),
+    'weight' => 80,
     'language' => 'he',
   );
   menu_link_save($item);
-
+*/
 
   // Individual/ Community space menu.
   $menu = array(

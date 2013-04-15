@@ -104,9 +104,7 @@ class KaveretPageNodes extends KaveretMigration {
   public $entityType = 'node';
   public $bundle = 'page';
 
-  public $dependencies = array(
-    'KaveretOfferCategoriesTerms',
-  );
+
 
   public function __construct() {
     parent::__construct();
@@ -114,14 +112,54 @@ class KaveretPageNodes extends KaveretMigration {
     $this->addFieldMapping('body', 'body')
       ->arguments(array('format' => 'full_html'));;
 
-    $this
-      ->addFieldMapping('field_category', 'field_category')
-      ->sourceMigration('KaveretOfferCategoriesTerms');
-
     $this->addFieldMapping('language', 'language');
     $this->addFieldMapping('path', 'path');
   }
+  /*
+  public function complete($entity, $row) {
+    // Create a menu link in the sidebar menu for each page.
+    $item = array(
+      'link_title' => $entity->title,
+      'link_path' => 'node/' . $entity->nid,
+      'menu_name' => 'side-menu',
+      'expanded' => TRUE,
+      'customized' => TRUE,
+      'options' => array('attributes' => array('class' => array('main', $row->path))),
+      'weight' => $row->link_weight,
+      'language' => $row->language,
+    );
+    menu_link_save($item);
+  } */
+
 }
+
+
+/**
+ * Migrate Menu.
+ */
+/*
+class KaveretMenu extends Migration {
+  public $csvColumns = array(
+    array('id', 'Unique ID'),
+    array('title', 'Title'),
+    array('weight', 'Weight'),
+    array('language', 'Language'),
+    array('path', 'Path'),
+    array('parent', 'Parent'),
+  );
+
+ // $this->source = new MigrateSourceCSV(drupal_get_path('module', 'kaveret_migrate') . '/csv/node/menu.csv', $this->csvColumns, array('header_rows' => 1));
+
+
+  public function complete($entity, $row) {
+  dpm($row);
+  }
+
+}
+
+*/
+
+
 
 /**
  * Migrate product nodes.
