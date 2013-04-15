@@ -124,6 +124,45 @@ class KaveretPageNodes extends KaveretMigration {
 }
 
 /**
+ * Migrate Menu.
+ */
+
+class KaveretMenu extends Migration {
+  public $csvColumns = array(
+    array('id', 'Unique ID'),
+    array('title', 'Title'),
+    array('language', 'Language'),
+    array('path', 'Path'),
+    array('link_weight', 'Link weight'),
+    array('parent', 'Parent'),
+  );
+
+  public $dependencies = array('KaveretPageNodes');
+  public function __construct() {
+    parent::__construct(); parent::__construct();
+
+    // Creating dummy destination, otherwise the migration won't work.
+    $key = array(
+      'id' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    );
+    
+    $this->map = new MigrateSQLMap($this->machineName, $key, MigrateDestinationEntityAPI::getKeySchema('node'));
+
+    $this->source = new MigrateSourceCSV(drupal_get_path('module', 'kaveret_migrate') . '/csv/menu/menu.csv', $this->csvColumns, array('header_rows' => 1));
+    $this->destination = new MigrateDestinationEntityAPI('node', 'product');
+  }
+
+  public function complete($entity, $row) {
+
+  }
+
+}
+
+/**
  * Migrate product nodes.
  */
 class KaveretProductNodes extends KaveretMigration {
