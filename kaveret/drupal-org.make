@@ -82,6 +82,8 @@ projects[message_subscribe][version] = "1.0-alpha3"
 
 projects[migrate][subdir] = "contrib"
 projects[migrate][version] = "2.x-dev"
+projects[migrate][patch][] = "http://drupal.org/files/0001_Issue_1621906_by_marvil07_Support_destination_system.patch"
+projects[migrate][patch][] = "http://drupal.org/files/menu_destinations_1403044_25.patch"
 
 
 projects[migrate_extras][subdir] = "contrib"
