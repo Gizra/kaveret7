@@ -126,18 +126,13 @@ class KaveretPageNodes extends KaveretMigration {
 /**
  * Migrate Menu.
  */
-
 class KaveretMenu extends Migration {
   public $csvColumns = array(
     array('id', 'Unique ID'),
-    array('title', 'Title'),
-    array('language', 'Language'),
-    array('path', 'Path'),
-    array('link_weight', 'Link weight'),
-    array('parent', 'Parent'),
+    array('menu_name', 'Menu name'),
   );
 
-  public $dependencies = array('KaveretPageNodes');
+
   public function __construct() {
     parent::__construct(); parent::__construct();
 
@@ -149,17 +144,51 @@ class KaveretMenu extends Migration {
         'not null' => TRUE,
       ),
     );
-    
-    $this->map = new MigrateSQLMap($this->machineName, $key, MigrateDestinationEntityAPI::getKeySchema('node'));
 
+    $this->map = new MigrateSQLMap($this->machineName, $key, MigrateDestinationMenu::getKeySchema('menu'));
     $this->source = new MigrateSourceCSV(drupal_get_path('module', 'kaveret_migrate') . '/csv/menu/menu.csv', $this->csvColumns, array('header_rows' => 1));
-    $this->destination = new MigrateDestinationEntityAPI('node', 'product');
+    $this->destination = new MigrateDestinationMenu();
+    $this->addFieldMapping('menu_name', 'menu_name');
+    $this->addFieldMapping('title', 'menu_name');
   }
+}
 
-  public function complete($entity, $row) {
+class KaveretMenuLinks extends Migration {
+  public $csvColumns = array(
+    array('id', 'Unique ID'),
+    array('title', 'Title'),
+    array('language', 'Language'),
+    array('path', 'Path'),
+    array('link_weight', 'Link weight'),
+    array('parent', 'Parent'),
+    array('menu_name', 'Menu name'),
+  );
+
+  public $dependencies = array('KaveretPageNodes', 'KaveretMenu');
+  public function __construct() {
+    parent::__construct(); parent::__construct();
+
+    // Creating dummy destination, otherwise the migration won't work.
+    $key = array(
+      'id' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+    );
+
+    $this->map = new MigrateSQLMap($this->machineName, $key, MigrateDestinationMenuLinks::getKeySchema('menu-links'));
+    $this->source = new MigrateSourceCSV(drupal_get_path('module', 'kaveret_migrate') . '/csv/menu/menu.csv', $this->csvColumns, array('header_rows' => 1));
+    $this->destination = new MigrateDestinationMenuLinks();
+
+    $this->addFieldMapping('menu_name', 'menu_name');
+    $this->addFieldMapping('link_title', 'title');
+    $this->addFieldMapping('link_path', 'path');
+
+
+
 
   }
-
 }
 
 /**

@@ -1,3 +1,2 @@
-Unique ID,Title,Language,Path,Link weight,Parent
-1,Resource Exchange,en,resource-exchange,10,
-2,My Wallet,en,my-wallet,20,1
+Unique ID,Menu name
+menu1,side-menu

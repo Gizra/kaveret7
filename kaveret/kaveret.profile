@@ -412,6 +412,7 @@ function kaveret_og_setup() {
  */
 function kaveret_menus_setup() {
   // Add links to user menu.
+  /*
   $item = array(
     'link_title' => 'Log in',
     'link_path' => 'user/login',
@@ -983,7 +984,8 @@ function kaveret_menus_setup() {
   );
   menu_link_save($item);
 }
-
+*/
+  
 /**
  * Profile task; Import language files.
  */
