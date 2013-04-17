@@ -47,6 +47,11 @@ function kaveret_accounting_mcapicurrencies_default_alter(&$currencies) {
   $mcapicurrency->disabled = FALSE; /* Edit this to true to make a default mcapicurrency disabled initially */
   $mcapicurrency->api_version = 3;
   $mcapicurrency->currcode = 'bz';
+
+  $mcapicurrency->limits['limits_callback'] = 'limits_global';
+  $mcapicurrency->limits['limits_global']['min'] = -500;
+  $mcapicurrency->limits['skip'] = 'reservoir';
+
   $mcapicurrency->data = (object) array(
     'info' => array(
       'currcode' => 'bz',
