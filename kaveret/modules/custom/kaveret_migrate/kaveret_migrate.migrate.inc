@@ -171,6 +171,7 @@ class KaveretMenuLinks extends Migration {
     array('link_weight', 'Link weight'),
     array('parent', 'Parent'),
     array('options', 'Options'),
+    array('has_children', 'has_children'),
   );
 
   public $dependencies = array('KaveretPageNodes', 'KaveretMenu');
@@ -194,14 +195,27 @@ class KaveretMenuLinks extends Migration {
     $this->addFieldMapping('language', 'language');
     $this->addFieldMapping('link_path', 'link_path');
     $this->addFieldMapping('weight', 'link_weight');
-    $this->addFieldMapping('plid', 'parent');
+    $this->addFieldMapping('parent', 'parent');
     $this->addFieldMapping('options', 'options');
+    $this->addFieldMapping('has_children', 'has_children');
   }
 
   public function prepare($entity, $row) {
-    dpm($entity);
+
   }
 
+  public function complete($entity, $row) {
+    if ($row->parent != $entity->link_path) {
+      $query = db_select('menu_links', 'ml');
+      $result = $query->fields('ml')
+        ->condition('ml.link_path', $row->parent)
+        ->execute()
+        ->fetchAssoc();
+
+      $mlid = $result['mlid'];
+      $entity->plid = $mlid;
+   }
+  }
 }
 
 /**
