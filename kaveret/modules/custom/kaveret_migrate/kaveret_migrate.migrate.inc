@@ -130,6 +130,7 @@ class KaveretMenu extends Migration {
   public $csvColumns = array(
     array('id', 'Unique ID'),
     array('menu_name', 'Menu name'),
+    array('description', 'Description'),
   );
 
 
@@ -150,6 +151,7 @@ class KaveretMenu extends Migration {
     $this->destination = new MigrateDestinationMenu();
     $this->addFieldMapping('menu_name', 'menu_name');
     $this->addFieldMapping('title', 'menu_name');
+    $this->addFieldMapping('description', 'description');
   }
 }
 
@@ -165,6 +167,7 @@ class KaveretMenuLinks extends Migration {
     array('link_weight', 'Link weight'),
     array('parent', 'Parent'),
     array('menu_name', 'Menu name'),
+    array('options', 'Options'),
   );
 
   public $dependencies = array('KaveretPageNodes', 'KaveretMenu');
@@ -179,18 +182,23 @@ class KaveretMenuLinks extends Migration {
         'not null' => TRUE,
       ),
     );
-
     $this->map = new MigrateSQLMap($this->machineName, $key, MigrateDestinationMenuLinks::getKeySchema('menu-links'));
     $this->source = new MigrateSourceCSV(drupal_get_path('module', 'kaveret_migrate') . '/csv/menu/menu.csv', $this->csvColumns, array('header_rows' => 1));
     $this->destination = new MigrateDestinationMenuLinks();
-
     $this->addFieldMapping('menu_name', 'menu_name');
-    $this->addFieldMapping('link_title', 'title');
+    $this->addFieldMapping('mlid', 'id');
+    $this->addFieldMapping('plid', 'parent');
     $this->addFieldMapping('link_path', 'path');
-
-
-
-
+    $this->addFieldMapping('hidden', FALSE);
+    $this->addFieldMapping('external', FALSE);
+    $this->addFieldMapping('has_children', TRUE);
+    $this->addFieldMapping('expanded', FALSE);
+    $this->addFieldMapping('weight', 'link_weight');
+    $this->addFieldMapping('module', 'migrate');
+    $this->addFieldMapping('link_title', 'title');
+    $this->addFieldMapping('options', 'options');
+    $this->addFieldMapping('customized', TRUE);
+    $this->addFieldMapping('updated', TRUE);
   }
 }
 

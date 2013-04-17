@@ -1,3 +1,3 @@
-Unique ID,Title,Language,Path,Link weight,Parent,Menu name
-1,Resource Exchange,en,resource-exchange,10,,side-menu
+Unique ID,Title,Language,Path,Link weight,Parent,Menu name,Options
+1,Resource Exchange,en,resource-exchange,10,0,side-menu,array('attributes' => array('class' => array('main', 'resources')))
 2,My Wallet,en,my-wallet,20,1,side-menu
