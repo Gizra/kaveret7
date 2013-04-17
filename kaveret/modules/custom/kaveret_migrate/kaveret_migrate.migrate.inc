@@ -152,6 +152,9 @@ class KaveretMenu extends Migration {
     $this->addFieldMapping('menu_name', 'menu_name');
     $this->addFieldMapping('title', 'menu_name');
     $this->addFieldMapping('description', 'description');
+    $this->addFieldMapping('i18n_mode')
+      ->defaultValue(I18N_MODE_MULTIPLE);
+
   }
 }
 
@@ -161,12 +164,12 @@ class KaveretMenu extends Migration {
 class KaveretMenuLinks extends Migration {
   public $csvColumns = array(
     array('id', 'Unique ID'),
+    array('menu_name', 'Menu name'),
     array('title', 'Title'),
     array('language', 'Language'),
-    array('path', 'Path'),
+    array('link_path', 'Path'),
     array('link_weight', 'Link weight'),
     array('parent', 'Parent'),
-    array('menu_name', 'Menu name'),
     array('options', 'Options'),
   );
 
@@ -182,24 +185,24 @@ class KaveretMenuLinks extends Migration {
         'not null' => TRUE,
       ),
     );
+
     $this->map = new MigrateSQLMap($this->machineName, $key, MigrateDestinationMenuLinks::getKeySchema('menu-links'));
-    $this->source = new MigrateSourceCSV(drupal_get_path('module', 'kaveret_migrate') . '/csv/menu/menu.csv', $this->csvColumns, array('header_rows' => 1));
+    $this->source = new MigrateSourceCSV(drupal_get_path('module', 'kaveret_migrate') . '/csv/menu/menu-links.csv', $this->csvColumns, array('header_rows' => 1));
     $this->destination = new MigrateDestinationMenuLinks();
     $this->addFieldMapping('menu_name', 'menu_name');
-    $this->addFieldMapping('mlid', 'id');
-    $this->addFieldMapping('plid', 'parent');
-    $this->addFieldMapping('link_path', 'path');
-    $this->addFieldMapping('hidden', FALSE);
-    $this->addFieldMapping('external', FALSE);
-    $this->addFieldMapping('has_children', TRUE);
-    $this->addFieldMapping('expanded', FALSE);
-    $this->addFieldMapping('weight', 'link_weight');
-    $this->addFieldMapping('module', 'migrate');
     $this->addFieldMapping('link_title', 'title');
+    $this->addFieldMapping('language', 'language');
+    $this->addFieldMapping('link_path', 'link_path');
+    $this->addFieldMapping('weight', 'link_weight');
+    $this->addFieldMapping('plid', 'parent');
     $this->addFieldMapping('options', 'options');
-    $this->addFieldMapping('customized', TRUE);
-    $this->addFieldMapping('updated', TRUE);
+    $this->addFieldMapping('mlid', 'id');
   }
+
+  public function prepare($entity, $row) {
+    dpm($entity);
+  }
+
 }
 
 /**
