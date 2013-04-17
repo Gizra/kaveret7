@@ -196,7 +196,6 @@ class KaveretMenuLinks extends Migration {
     $this->addFieldMapping('weight', 'link_weight');
     $this->addFieldMapping('plid', 'parent');
     $this->addFieldMapping('options', 'options');
-    $this->addFieldMapping('mlid', 'id');
   }
 
   public function prepare($entity, $row) {
