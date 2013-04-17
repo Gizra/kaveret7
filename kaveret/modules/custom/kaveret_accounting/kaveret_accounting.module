@@ -48,15 +48,6 @@ function kaveret_accounting_mcapicurrencies_default_alter(&$currencies) {
   $mcapicurrency->api_version = 3;
   $mcapicurrency->currcode = 'bz';
 
-  $mcapicurrency->limits = array(
-    'limits_callback' => 'limits_global',
-    'limits_global' => array(
-      'min' => -500,
-    ),
-    'skip' => 'reservoir',
-  );
-
-
   $mcapicurrency->data = (object) array(
     'info' => array(
       'currcode' => 'bz',
@@ -110,9 +101,23 @@ function kaveret_accounting_mcapicurrencies_default_alter(&$currencies) {
     'buttons' => array(
       'delete' => 'Delete',
     ),
+    'limits' => array(
+      'limits_callback' => 'limits_global',
+      'limits_global' => array(
+        'min' => -500,
+      ),
+      'skip' => array(
+        'reservoir' => 'reservoir',
+        'auto' => FALSE,
+        'mass' => FALSE,
+        'user1' => FALSE,
+        'owner' => FALSE,
+      ),
+    )
   );
 
   // Override the other default currencies.
   $currencies = array($mcapicurrency->currcode => $mcapicurrency);
   return $currencies;
 }
+
