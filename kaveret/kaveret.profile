@@ -1001,3 +1001,4 @@ function kaveret_i18n_setup() {
     _locale_import_po($file, $langcode, LOCALE_IMPORT_KEEP, 'default');
   }
 }
+}
