@@ -985,7 +985,7 @@ function kaveret_menus_setup() {
   menu_link_save($item);
 }
 */
-  
+
 /**
  * Profile task; Import language files.
  */

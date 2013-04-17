@@ -153,6 +153,9 @@ class KaveretMenu extends Migration {
   }
 }
 
+/**
+ * Migrate MenuLinks.
+ */
 class KaveretMenuLinks extends Migration {
   public $csvColumns = array(
     array('id', 'Unique ID'),
