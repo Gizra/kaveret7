@@ -1,5 +1,5 @@
 Unique ID,Menu name,Title,Language,Path,Link weight,Parent
 menuLink1,side-menu,Resource Exchange,en,resource-exchange,10,
-menuLink2,side-menu,My Wallet,en,my-wallet,20,resource-exchange
-menuLink3,side-menu,Directory,en,directory,30,resource-exchange
+menuLink2,side-menu,My Wallet,en,my-wallet,20,menuLink1
+menuLink3,side-menu,Directory,en,directory,30,menuLink1
 menuLink4,side-menu,Dreams Accelerator,en,dreams-accelerator,40,

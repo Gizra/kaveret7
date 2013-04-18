@@ -208,6 +208,9 @@ class KaveretMenuLinks extends Migration {
 
     $this->addFieldMapping('link_path', 'link_path');
 
+    // The router path might change in the prepare function.
+    $this->addFieldMapping('router_path', 'link_path');
+
     $this->addFieldMapping('weight', 'link_weight');
 
     $this
@@ -217,21 +220,28 @@ class KaveretMenuLinks extends Migration {
 
 
   public function prepare($entity, $row) {
+    // Get the non-aliases URL.
+    if ($source = drupal_lookup_path('source', $row->link_path)) {
+      // Check if the path is a node
+      $item = menu_get_item($source);
+
+      // The router-path for a node should be 'node/%'.
+      $entity->link_path = $source;
+      $entity->router_path = $item['path'];
+    }
+
     if (!$row->parent) {
       return;
     }
 
-    // Get the non-aliases URL.
-    $path = drupal_lookup_path('source', $row->link_path);
-
-    $query = db_select('menu_links', 'ml');
+    // Get parent link ID from migrates' table.
+    $query = db_select('migrate_map_kaveretmenulinks', 'ml');
     $result = $query->fields('ml')
-      ->condition('ml.link_path', $row->parent)
+      ->condition('ml.sourceid1', $row->parent)
       ->execute()
       ->fetchAssoc();
 
-    $mlid = $result['mlid'];
-    $entity->plid = $mlid;
+    $entity->plid = $result['destid1'];
   }
 }
 
