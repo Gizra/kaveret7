@@ -127,6 +127,7 @@ class KaveretPageNodes extends KaveretMigration {
  * Migrate Menu.
  */
 class KaveretMenu extends Migration {
+
   public $csvColumns = array(
     array('id', 'Unique ID'),
     array('menu_name', 'Menu name'),
@@ -135,7 +136,7 @@ class KaveretMenu extends Migration {
 
 
   public function __construct() {
-    parent::__construct(); parent::__construct();
+    parent::__construct();
 
     // Creating dummy destination, otherwise the migration won't work.
     $key = array(
@@ -149,9 +150,14 @@ class KaveretMenu extends Migration {
     $this->map = new MigrateSQLMap($this->machineName, $key, MigrateDestinationMenu::getKeySchema('menu'));
     $this->source = new MigrateSourceCSV(drupal_get_path('module', 'kaveret_migrate') . '/csv/menu/menu.csv', $this->csvColumns, array('header_rows' => 1));
     $this->destination = new MigrateDestinationMenu();
+
     $this->addFieldMapping('menu_name', 'menu_name');
+
     $this->addFieldMapping('title', 'menu_name');
+
     $this->addFieldMapping('description', 'description');
+
+    // Add i18n Support.
     $this->addFieldMapping('i18n_mode')
       ->defaultValue(I18N_MODE_MULTIPLE);
 
@@ -159,9 +165,10 @@ class KaveretMenu extends Migration {
 }
 
 /**
- * Migrate MenuLinks.
+ * Migrate Menu links.
  */
 class KaveretMenuLinks extends Migration {
+
   public $csvColumns = array(
     array('id', 'Unique ID'),
     array('menu_name', 'Menu name'),
@@ -170,13 +177,15 @@ class KaveretMenuLinks extends Migration {
     array('link_path', 'Path'),
     array('link_weight', 'Link weight'),
     array('parent', 'Parent'),
-    array('options', 'Options'),
-    array('has_children', 'has_children'),
   );
 
-  public $dependencies = array('KaveretPageNodes', 'KaveretMenu');
+  public $dependencies = array(
+    'KaveretPageNodes',
+    'KaveretMenu',
+  );
+
   public function __construct() {
-    parent::__construct(); parent::__construct();
+    parent::__construct();
 
     // Creating dummy destination, otherwise the migration won't work.
     $key = array(
@@ -190,31 +199,39 @@ class KaveretMenuLinks extends Migration {
     $this->map = new MigrateSQLMap($this->machineName, $key, MigrateDestinationMenuLinks::getKeySchema('menu-links'));
     $this->source = new MigrateSourceCSV(drupal_get_path('module', 'kaveret_migrate') . '/csv/menu/menu-links.csv', $this->csvColumns, array('header_rows' => 1));
     $this->destination = new MigrateDestinationMenuLinks();
+
     $this->addFieldMapping('menu_name', 'menu_name');
+
     $this->addFieldMapping('link_title', 'title');
+
     $this->addFieldMapping('language', 'language');
+
     $this->addFieldMapping('link_path', 'link_path');
+
     $this->addFieldMapping('weight', 'link_weight');
-    $this->addFieldMapping('parent', 'parent');
-    $this->addFieldMapping('options', 'options');
-    $this->addFieldMapping('has_children', 'has_children');
+
+    $this
+      ->addFieldMapping('plid', 'parent')
+      ->defaultValue(0);
   }
+
 
   public function prepare($entity, $row) {
+    if (!$row->parent) {
+      return;
+    }
 
-  }
+    // Get the non-aliases URL.
+    $path = drupal_lookup_path('source', $row->link_path);
 
-  public function complete($entity, $row) {
-    if ($row->parent != $entity->link_path) {
-      $query = db_select('menu_links', 'ml');
-      $result = $query->fields('ml')
-        ->condition('ml.link_path', $row->parent)
-        ->execute()
-        ->fetchAssoc();
+    $query = db_select('menu_links', 'ml');
+    $result = $query->fields('ml')
+      ->condition('ml.link_path', $row->parent)
+      ->execute()
+      ->fetchAssoc();
 
-      $mlid = $result['mlid'];
-      $entity->plid = $mlid;
-   }
+    $mlid = $result['mlid'];
+    $entity->plid = $mlid;
   }
 }
 
