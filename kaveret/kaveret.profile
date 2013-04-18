@@ -412,7 +412,6 @@ function kaveret_og_setup() {
  */
 function kaveret_menus_setup() {
   // Add links to user menu.
-  /*
   $item = array(
     'link_title' => 'Log in',
     'link_path' => 'user/login',
@@ -487,152 +486,6 @@ function kaveret_menus_setup() {
     'language' => 'he',
   );
   menu_link_save($item);
-
-
-
-  // Create the footer links menu.
-  $menu = array(
-    'menu_name' => 'side-menu',
-    'title' => 'Side menu',
-    'description' => 'Side pop-up menu',
-    'i18n_mode' => I18N_MODE_MULTIPLE,
-  );
-  menu_save($menu);
-
-  // Add main menu links.
-  $item = array(
-    'link_title' => 'Resource Exchange',
-    'link_path' => '<front>',
-    'menu_name' => 'side-menu',
-    'expanded' => TRUE,
-    'options' => array('attributes' => array('class' => array('main', 'resources'))),
-    'weight' => 10,
-    'language' => 'en',
-
-  );
-  $mlid = menu_link_save($item);
-
-  $item = array(
-    'link_title' => 'My Treasure',
-    'link_path' => 'my-wallet',
-    'menu_name' => 'side-menu',
-    'plid' => $mlid,
-    'customized' => TRUE,
-    'language' => 'en',
-  );
-  menu_link_save($item);
-
-  $item = array(
-    'link_title' => 'Directory',
-    'link_path' => 'directory',
-    'menu_name' => 'side-menu',
-    'plid' => $mlid,
-    'customized' => TRUE,
-    'language' => 'en',
-  );
-  menu_link_save($item);
-
-  $item = array(
-    'link_title' => 'Dreams Accelerator',
-    'link_path' => '<front>',
-    'menu_name' => 'side-menu',
-    'expanded' => TRUE,
-    'options' => array('attributes' => array('class' => array('main', 'dreams'))),
-    'weight' => 20,
-    'language' => 'en',
-  );
-  menu_link_save($item);
-
-  $item = array(
-    'link_title' => 'Learning center',
-    'link_path' => '<front>',
-    'menu_name' => 'side-menu',
-    'expanded' => TRUE,
-    'options' => array('attributes' => array('class' => array('main', 'learning-center'))),
-    'weight' => 30,
-    'language' => 'en',
-  );
-  menu_link_save($item);
-
-  $item = array(
-    'link_title' => 'Groups',
-    'link_path' => '<front>',
-    'menu_name' => 'side-menu',
-    'expanded' => TRUE,
-    'options' => array('attributes' => array('class' => array('main', 'communities'))),
-    'weight' => 40,
-    'language' => 'en',
-  );
-  menu_link_save($item);
-
-  // Hebrew translation.
-  $item = array(
-    'link_title' => 'החלפת משאבים',
-    'link_path' => '<front>',
-    'menu_name' => 'side-menu',
-    'expanded' => TRUE,
-    'options' => array('attributes' => array('class' => array('main', 'resources'))),
-    'weight' => 10,
-    'language' => 'he',
-
-  );
-  $mlid = menu_link_save($item);
-
-  $item = array(
-    'link_title' => 'תקייה',
-    'link_path' => 'directory',
-    'menu_name' => 'side-menu',
-    'plid' => $mlid,
-    'customized' => TRUE,
-    'weight' => 20,
-    'language' => 'he',
-  );
-  menu_link_save($item);
-
-  $item = array(
-    'link_title' => 'החשבון שלי',
-    'link_path' => 'my-wallet',
-    'menu_name' => 'side-menu',
-    'plid' => $mlid,
-    'customized' => TRUE,
-    'weight' => 30,
-    'language' => 'he',
-  );
-  menu_link_save($item);
-
-  $item = array(
-    'link_title' => 'מאיץ החלומות',
-    'link_path' => '<front>',
-    'menu_name' => 'side-menu',
-    'expanded' => TRUE,
-    'options' => array('attributes' => array('class' => array('main', 'dreams'))),
-    'weight' => 40,
-    'language' => 'he',
-  );
-  menu_link_save($item);
-
-  $item = array(
-    'link_title' => 'מרכז המידע',
-    'link_path' => '<front>',
-    'menu_name' => 'side-menu',
-    'expanded' => TRUE,
-    'options' => array('attributes' => array('class' => array('main', 'dreams'))),
-    'weight' => 50,
-    'language' => 'he',
-  );
-  menu_link_save($item);
-
-  $item = array(
-    'link_title' => 'קבוצות',
-    'link_path' => '<front>',
-    'menu_name' => 'side-menu',
-    'expanded' => TRUE,
-    'options' => array('attributes' => array('class' => array('main', 'dreams'))),
-    'weight' => 60,
-    'language' => 'he',
-  );
-  menu_link_save($item);
-
 
   // Individual/ Community space menu.
   $menu = array(
@@ -984,7 +837,6 @@ function kaveret_menus_setup() {
   );
   menu_link_save($item);
 }
-*/
 
 /**
  * Profile task; Import language files.
@@ -1000,5 +852,4 @@ function kaveret_i18n_setup() {
     // Import the file.
     _locale_import_po($file, $langcode, LOCALE_IMPORT_KEEP, 'default');
   }
-}
 }
