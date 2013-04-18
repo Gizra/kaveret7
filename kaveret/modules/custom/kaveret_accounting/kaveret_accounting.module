@@ -108,7 +108,7 @@ function kaveret_accounting_mcapicurrencies_default_alter(&$currencies) {
       ),
       'skip' => array(
         'reservoir' => 'reservoir',
-        'auto' => FALSE,
+        'auto' => 'auto',
         'mass' => FALSE,
         'user1' => FALSE,
         'owner' => FALSE,
@@ -127,7 +127,7 @@ function kaveret_accounting_mcapicurrencies_default_alter(&$currencies) {
  * Add Beez to a new user.
  */
 function kaveret_accounting_user_insert(&$edit, $account, $category) {
-  kaveret_accounting_balances_member($account->uid, 'bz','auto',300 ,0);
+  kaveret_accounting_balances_member($account->uid ,'bz' ,'auto' ,300 ,0);
 }
 
 /**
