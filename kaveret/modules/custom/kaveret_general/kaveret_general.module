@@ -66,15 +66,14 @@ function kaveret_general_form_user_login_block_alter(&$form, &$form_state){
 function kaveret_general_node_update($node) {
   $wrapper = entity_metadata_wrapper('node', $node);
   $wrapper_original = entity_metadata_wrapper('node', $node->original);
-
   if ($wrapper->field_status->value(array('identifier' => TRUE)) == $wrapper_original->field_status->value(array('identifier' => TRUE))) {
     return;
   }
 
+  $message = message_create('status_changed_in_offer_or_request', array('uid' => $node->uid));
+  $wrapper = entity_metadata_wrapper('message', $message);
+  $wrapper->field_node->set($node);
 
+  message_notify_send_message($message);
 
 }
-/*
-function kaveret_general_send_message(Message $message, array $options = array(), $notifier_name = 'email') {
-
-}*/
