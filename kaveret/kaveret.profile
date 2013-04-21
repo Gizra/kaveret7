@@ -982,8 +982,6 @@ function kaveret_menus_setup() {
     'options' => array('attributes' => array('class' => array('wordpress'))),
   );
   menu_link_save($item);
-  
-  variable_set('mail_system', array('default-system' => 'DevelMailLog'));
 }
 
 /**
