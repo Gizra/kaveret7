@@ -64,8 +64,13 @@ function kaveret_general_form_user_login_block_alter(&$form, &$form_state){
  * Send mail when status is changed (Offer/Request).
  */
 function kaveret_general_node_update($node) {
+  if (!in_array($node->type, array('offer', 'request'))) {
+    return;
+  }
+
   $wrapper = entity_metadata_wrapper('node', $node);
   $wrapper_original = entity_metadata_wrapper('node', $node->original);
+
   if ($wrapper->field_status->value(array('identifier' => TRUE)) == $wrapper_original->field_status->value(array('identifier' => TRUE))) {
     return;
   }
