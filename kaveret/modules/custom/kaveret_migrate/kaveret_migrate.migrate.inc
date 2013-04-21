@@ -222,6 +222,10 @@ class KaveretMenuLinks extends Migration {
     $this
       ->addFieldMapping('plid', 'parent')
       ->defaultValue(0);
+
+    $this
+      ->addFieldMapping('expanded', NULL)
+      ->defaultValue(1);
   }
 
 
