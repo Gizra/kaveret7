@@ -177,6 +177,8 @@ class KaveretMenuLinks extends Migration {
     array('link_path', 'Path'),
     array('link_weight', 'Link weight'),
     array('parent', 'Parent'),
+    // We will "push" the class to the correct place in the prepare function.
+    array('options', 'Class'),
   );
 
   public $dependencies = array(
@@ -214,12 +216,23 @@ class KaveretMenuLinks extends Migration {
     $this->addFieldMapping('weight', 'link_weight');
 
     $this
+      ->addFieldMapping('options', 'options')
+      ->separator('|');
+
+    $this
       ->addFieldMapping('plid', 'parent')
       ->defaultValue(0);
   }
 
 
   public function prepare($entity, $row) {
+    if ($entity->options) {
+      // Push the CSS class definition to the correct place.
+      $entity->options = array(
+        'attributes' => array('class' => $entity->options)
+      );
+    }
+
     // Get the non-aliases URL.
     if ($source = drupal_lookup_path('source', $row->link_path)) {
       // Check if the path is a node

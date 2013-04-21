@@ -1,4 +1,4 @@
-Unique ID,Menu name,Title,Language,Path,Link weight,Parent,Class,
+Unique ID,Menu name,Title,Language,Path,Link weight,Parent,Class
 menuLink1,side-menu,Resource Exchange,en,resource-exchange,10,,main|resources
 menuLink2,side-menu,My Treasure,en,my-wallet,20,menuLink1
 menuLink3,side-menu,Directory,en,directory,30,menuLink1
