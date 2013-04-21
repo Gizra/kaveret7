@@ -226,6 +226,10 @@ class KaveretMenuLinks extends Migration {
     $this
       ->addFieldMapping('expanded', NULL)
       ->defaultValue(1);
+
+    $this
+      ->addFieldMapping('customized', NULL)
+      ->defaultValue(1);
   }
 
 
@@ -238,7 +242,7 @@ class KaveretMenuLinks extends Migration {
     }
 
     // Get the non-aliases URL.
-    if ($source = drupal_lookup_path('source', $row->link_path)) {
+    if ($source = drupal_lookup_path('source', $row->link_path, $row->language)) {
       // Check if the path is a node
       $item = menu_get_item($source);
 
