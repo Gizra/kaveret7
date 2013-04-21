@@ -1,5 +1,5 @@
 
-<article id="node-<?php print $node->nid; ?>" class="span4 thumbnail <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+<article id="node-<?php print $node->nid; ?>" class="span3 thumbnail <?php print $classes; ?> clearfix"<?php print $attributes; ?>>
   <div class="border">
     <div class="border">
       <div class="border">

@@ -505,6 +505,10 @@ e.g. multipage*/
   clear: both;
 }
 
+.pane-offers-requests-panel-pane-1 article.node-teaser {
+  margin-left: 10px !important;
+}
+
 .region-sidebar-second a {
   color: #525252;
 }
@@ -561,14 +565,6 @@ article.node-teaser .caption a {
 }
 article.node-teaser .field-name-body {
   padding: 0;
-}
-
-.panel-display .panel-panel {
-  margin-left: -30px;
-  width: 1000px;
-}
-.panel-display .pane-my-content-panel-pane-my-content {
-  margin-left: 40px;
 }
 
 .page-my-wallet #my-wallet-panel {
