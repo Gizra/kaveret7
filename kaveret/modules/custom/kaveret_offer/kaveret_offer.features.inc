@@ -105,9 +105,9 @@ function kaveret_offer_default_message_type() {
           "safe_value" : "\\u003Cp\\u003EStatus has changed in your \\u003Ca href=\\u0022[message:field-node:url]\\u0022\\u003E[message:field-node]\\u003C\\/a\\u003E\\u003C\\/p\\u003E\\n"
         },
         {
-          "value" : "Hello [message:user],\\r\\n\\r\\nStatus has changed in your \\u003Ca href=\\u0022[message:field-node:url]\\u0022\\u003E[message:field-node]\\u003C\\/a\\u003E from \\u003Cem\\u003E[message:field-node:original:status]\\u003C\\/em\\u003E to \\u003Cem\\u003E[message:field-node:status]\\u003C\\/em\\u003E\\r\\n\\r\\nThank you,\\r\\nHaKaveret",
+          "value" : "Hello [message:user],\\r\\n\\r\\nStatus has changed in your \\u003Ca href=\\u0022[message:field-node:url]\\u0022\\u003E[message:field-node]\\u003C\\/a\\u003E from \\u003Cem\\u003E@original-status\\u003C\\/em\\u003E to \\u003Cem\\u003E@status\\u003C\\/em\\u003E\\r\\n\\r\\nThank you,\\r\\nHaKaveret",
           "format" : "full_html",
-          "safe_value" : "\\u003Cp\\u003EHello [message:user],\\u003C\\/p\\u003E\\n\\u003Cp\\u003EStatus has changed in your \\u003Ca href=\\u0022[message:field-node:url]\\u0022\\u003E[message:field-node]\\u003C\\/a\\u003E from \\u003Cem\\u003E[message:field-node:original:status]\\u003C\\/em\\u003E to \\u003Cem\\u003E[message:field-node:status]\\u003C\\/em\\u003E\\u003C\\/p\\u003E\\n\\u003Cp\\u003EThank you,\\u003Cbr \\/\\u003E\\nHaKaveret\\u003C\\/p\\u003E\\n"
+          "safe_value" : "\\u003Cp\\u003EHello [message:user],\\u003C\\/p\\u003E\\n\\u003Cp\\u003EStatus has changed in your \\u003Ca href=\\u0022[message:field-node:url]\\u0022\\u003E[message:field-node]\\u003C\\/a\\u003E from \\u003Cem\\u003E@original-status\\u003C\\/em\\u003E to \\u003Cem\\u003E@status\\u003C\\/em\\u003E\\u003C\\/p\\u003E\\n\\u003Cp\\u003EThank you,\\u003Cbr \\/\\u003E\\nHaKaveret\\u003C\\/p\\u003E\\n"
         }
       ]
     },

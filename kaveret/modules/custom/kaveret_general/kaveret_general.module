@@ -70,10 +70,14 @@ function kaveret_general_node_update($node) {
     return;
   }
 
-  $message = message_create('status_changed_in_offer_or_request', array('uid' => $node->uid));
+  $argumemts = array(
+    '@original-status' => $wrapper_original->field_status->label(),
+    '@status' => $wrapper->field_status->label(),
+  );
+
+  $message = message_create('status_changed_in_offer_or_request', array('arguments' => $argumemts, 'uid' => $node->uid));
   $wrapper = entity_metadata_wrapper('message', $message);
   $wrapper->field_node->set($node);
 
   message_notify_send_message($message);
-
 }
