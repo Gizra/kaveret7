@@ -270,7 +270,7 @@ function kaveret_offer_default_page_manager_pages() {
     $pane->pid = 'new-3';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
-    $pane->subtype = 'directory_right-panel_pane_1';
+    $pane->subtype = 'directory_my_content-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
