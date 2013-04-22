@@ -72,9 +72,10 @@ function kaveret_offer_views_default_views() {
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['operator'] = 'not in';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'community' => 'community',
+    'offer' => 'offer',
+    'product' => 'product',
+    'request' => 'request',
   );
 
   /* Display: Content pane */
