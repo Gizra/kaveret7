@@ -26,9 +26,9 @@ class KaveretOfferNodes extends KaveretMigration {
   public $csvColumns = array(
     array('field_category', 'Category'),
     array('field_expiry_after', 'Delete after'),
-    array('language', 'Language'),
     array('body', 'Body'),
     array('field_image', 'Image'),
+    array('language', 'Language'),
   );
 
   public $entityType = 'node';
@@ -41,7 +41,6 @@ class KaveretOfferNodes extends KaveretMigration {
   public function __construct() {
     parent::__construct();
 
-    $this->addFieldMapping('language', 'language');
     $this->addFieldMapping('body', 'body')
       ->arguments(array('format' => 'plain_text'));;
     $this->addFieldMapping('field_expiry_after', 'field_expiry_after');
@@ -53,6 +52,7 @@ class KaveretOfferNodes extends KaveretMigration {
       ->addFieldMapping('field_image:source_dir')
       ->defaultValue(drupal_get_path('module', 'kaveret_migrate') . '/images');
     $this->addFieldMapping('field_category', 'field_category');
+    $this->addFieldMapping('language', 'language');
   }
 }
 
@@ -63,9 +63,9 @@ class KaveretRequestNodes extends KaveretMigration {
   public $csvColumns = array(
     array('field_category', 'Category'),
     array('field_expiry_after', 'Delete after'),
-    array('language', 'Language'),
     array('body', 'Body'),
     array('field_image', 'Image'),
+    array('language', 'Language'),
   );
 
   public $entityType = 'node';
@@ -78,7 +78,6 @@ class KaveretRequestNodes extends KaveretMigration {
   public function __construct() {
     parent::__construct();
 
-    $this->addFieldMapping('language', 'language');
     $this->addFieldMapping('body', 'body')
       ->arguments(array('format' => 'plain_text'));;
     $this->addFieldMapping('field_expiry_after', 'field_expiry_after');
@@ -90,6 +89,7 @@ class KaveretRequestNodes extends KaveretMigration {
       ->addFieldMapping('field_image:source_dir')
       ->defaultValue(drupal_get_path('module', 'kaveret_migrate') . '/images');
     $this->addFieldMapping('field_category', 'field_category');
+    $this->addFieldMapping('language', 'language');
   }
 }
 
@@ -278,6 +278,7 @@ class KaveretProductNodes extends KaveretMigration {
     array('sku', 'SKU'),
     array('language', 'Language'),
     array('body', 'Body'),
+    array('field_category', 'Category'),
   );
 
   public $entityType = 'node';
@@ -292,6 +293,7 @@ class KaveretProductNodes extends KaveretMigration {
       ->arguments(array('format' => 'full_html'));;
     $this->addFieldMapping('field_product', 'sku');
     $this->addFieldMapping('language', 'language');
+    $this->addFieldMapping('field_category', 'field_category');
   }
 
   public function prepareRow($row) {

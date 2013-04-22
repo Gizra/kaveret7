@@ -231,7 +231,7 @@ function kaveret_offer_default_page_manager_pages() {
     'relationships' => array(),
   );
   $display = new panels_display();
-  $display->layout = 'bootstrap_twocol_10_2';
+  $display->layout = 'bootstrap_twocol_9_3';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
