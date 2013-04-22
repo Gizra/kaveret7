@@ -375,98 +375,14 @@ function kaveret_commerce_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-product-field_product'.
-  $fields['node-product-field_product'] = array(
+  // Exported field: 'node-product-field_category'.
+  $fields['node-product-field_category'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_product',
-      'foreign keys' => array(
-        'product_id' => array(
-          'columns' => array(
-            'product_id' => 'product_id',
-          ),
-          'table' => 'commerce_product',
-        ),
-      ),
-      'indexes' => array(
-        'product_id' => array(
-          0 => 'product_id',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'commerce_product_reference',
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-      ),
-      'translatable' => '0',
-      'type' => 'commerce_product_reference',
-    ),
-    'field_instance' => array(
-      'bundle' => 'product',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'commerce_cart',
-          'settings' => array(
-            'combine' => TRUE,
-            'default_quantity' => 1,
-            'line_item_type' => 'product',
-            'show_quantity' => FALSE,
-            'show_single_product_attributes' => FALSE,
-          ),
-          'type' => 'commerce_cart_add_to_cart_form',
-          'weight' => '4',
-        ),
-        'teaser' => array(
-          'label' => 'hidden',
-          'module' => 'commerce_cart',
-          'settings' => array(
-            'combine' => TRUE,
-            'default_quantity' => 1,
-            'line_item_type' => 'product',
-            'show_quantity' => FALSE,
-            'show_single_product_attributes' => FALSE,
-          ),
-          'type' => 'commerce_cart_add_to_cart_form',
-          'weight' => '4',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_product',
-      'label' => 'Product',
-      'required' => 1,
-      'settings' => array(
-        'entity_translation_sync' => FALSE,
-        'field_injection' => 1,
-        'referenceable_types' => array(
-          'product' => 'product',
-        ),
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'options',
-        'settings' => array(),
-        'type' => 'options_select',
-        'weight' => '-3',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-product-field_product_category'.
-  $fields['node-product-field_product_category'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_product_category',
+      'field_name' => 'field_category',
       'foreign keys' => array(
         'tid' => array(
           'columns' => array(
@@ -496,7 +412,11 @@ function kaveret_commerce_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'product',
-      'default_value' => NULL,
+      'default_value' => array(
+        0 => array(
+          'tid' => '14',
+        ),
+      ),
       'deleted' => '0',
       'description' => '',
       'display' => array(
@@ -515,7 +435,7 @@ function kaveret_commerce_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_product_category',
+      'field_name' => 'field_category',
       'label' => 'Category',
       'required' => 1,
       'settings' => array(
@@ -616,7 +536,6 @@ function kaveret_commerce_field_default_fields() {
   t('Category');
   t('Image');
   t('Price');
-  t('Product');
   t('Title');
 
   return $fields;
