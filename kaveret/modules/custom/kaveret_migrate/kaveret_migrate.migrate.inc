@@ -26,6 +26,7 @@ class KaveretOfferNodes extends KaveretMigration {
   public $csvColumns = array(
     array('field_category', 'Category'),
     array('field_expiry_after', 'Delete after'),
+    array('language', 'Language'),
     array('body', 'Body'),
     array('field_image', 'Image'),
   );
@@ -40,6 +41,7 @@ class KaveretOfferNodes extends KaveretMigration {
   public function __construct() {
     parent::__construct();
 
+    $this->addFieldMapping('language', 'language');
     $this->addFieldMapping('body', 'body')
       ->arguments(array('format' => 'plain_text'));;
     $this->addFieldMapping('field_expiry_after', 'field_expiry_after');
@@ -61,6 +63,7 @@ class KaveretRequestNodes extends KaveretMigration {
   public $csvColumns = array(
     array('field_category', 'Category'),
     array('field_expiry_after', 'Delete after'),
+    array('language', 'Language'),
     array('body', 'Body'),
     array('field_image', 'Image'),
   );
@@ -75,6 +78,7 @@ class KaveretRequestNodes extends KaveretMigration {
   public function __construct() {
     parent::__construct();
 
+    $this->addFieldMapping('language', 'language');
     $this->addFieldMapping('body', 'body')
       ->arguments(array('format' => 'plain_text'));;
     $this->addFieldMapping('field_expiry_after', 'field_expiry_after');
