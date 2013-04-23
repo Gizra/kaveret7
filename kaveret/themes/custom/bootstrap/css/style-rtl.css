@@ -226,3 +226,21 @@ html.js input.form-autocomplete {
   margin-left: 0;
   margin-right: 150px;
 }
+
+.form-item-worth-und .control-label {
+  margin-top: -25px;
+}
+.form-type-user-chooser-few .control-label {
+  margin-top: 10px;
+}
+.form-type-textfield .control-label {
+  margin-top: 15px;
+}
+
+.page-my-wallet #my-wallet-panel #mcapi-forms-form .worth-widget .form-text {
+  margin-top: -30px;
+}
+.page-my-wallet #my-wallet-panel #mcapi-forms-form input, .page-my-wallet #my-wallet-panel #mcapi-forms-form select {
+
+  margin-top: 10px;
+}
