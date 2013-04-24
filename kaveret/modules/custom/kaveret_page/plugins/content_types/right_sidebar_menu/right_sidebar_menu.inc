@@ -34,9 +34,9 @@ function kaveret_page_right_sidebar_menu_content_type_render($subtype, $conf, $a
 
   }
 
-  $output = '<h3>' . t('My Offers') . '</h3>' . theme('item_list', array('items' => $items['offer'])) . l(t('+ Create a new offer'),'node/add/offer');
-  $output .= '<h3>' . t('My Requests') . '</h3>' . theme('item_list', array('items' => $items['request'])) . l(t('+ Create a new  request'),'node/add/request');
-  $output .= '<h3>' . t('My Groups') . '</h3>' . theme('item_list', array('items' => $items['community'])) . l(t('+ Create a new group'),'node/add/community');
+  $output = '<h3>' . t('My Offers') . '</h3>' . theme('item_list', array('items' => $items['offer'])) . l(t('+ Create a new offer'),'node/add/offer', array('attributes' => array('class' => 'right_sidebar_menu-link')));
+  $output .= '<h3>' . t('My Requests') . '</h3>' . theme('item_list', array('items' => $items['request'])) . l(t('+ Create a new  request'),'node/add/request', array('attributes' => array('class' => 'right_sidebar_menu-link')));
+  $output .= '<h3>' . t('My Groups') . '</h3>' . theme('item_list', array('items' => $items['community'])) . l(t('+ Create a new group'),'node/add/community', array('attributes' => array('class' => 'right_sidebar_menu-link')));
 
   $block->content = $output;
   return $block;
