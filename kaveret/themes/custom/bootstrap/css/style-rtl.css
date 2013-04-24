@@ -179,3 +179,6 @@ div.contextual-links-wrapper {
 .page-my-wallet #my-wallet-panel #mcapi-forms-form .actions {
   text-align: left;
 }
+.page-my-wallet #my-wallet-panel .form-autocomplete {
+  background-position: 8px 8px;
+}
