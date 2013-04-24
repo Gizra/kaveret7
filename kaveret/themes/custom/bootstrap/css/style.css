@@ -163,6 +163,11 @@
   color: #0088cc;
   margin: 0 15px;
 }
+.pane-right-sidebar-menu .right_sidebar_menu-no_result {
+  font-size: 13px;
+  margin: 0 15px;
+  color: #999999;
+}
 
 #navbar .nav {
   float: right;
