@@ -904,6 +904,7 @@ function kaveret_menus_setup() {
  // Create
   $item = array(
     'link_title' => 'Create',
+    'link_path' => 'my-wallet',
     'menu_name' => 'space-links',
     'plid' => $mlid,
     'customized' => TRUE,
