@@ -24,32 +24,55 @@ function kaveret_page_right_sidebar_menu_content_type_render($subtype, $conf, $a
   $result = $query->entityCondition('entity_type', 'node')
     ->propertyCondition('type', array('offer', 'request', 'community'), 'IN')
     ->propertyCondition('uid', $user->uid)
+    ->propertyOrderBy('created')
     ->execute();
-  return;
-  foreach ($result['node'] as $info) {
-    $wrapper = entity_metadata_wrapper('node', $info->nid);
 
-    $type = $wrapper->getBundle();
-    $items[$type][] = l( t($wrapper->label()), 'node/' . $info->nid);
+  if (!empty($result['node'])) {
+
+    foreach ($result['node'] as $info) {
+      $wrapper = entity_metadata_wrapper('node', $info->nid);
+      $type = $wrapper->getBundle();
+      $items[$type][] = l( t($wrapper->label()), 'node/' . $info->nid);
+    }
   }
 
-  if (!empty($items['offer'])) {
-    $output = '<h3>' . t('My Offers') . '</h3>' . theme('item_list', array('items' => $items['offer'])) . l(t('+ Create a new offer'),'node/add/offer', array('attributes' => array('class' => 'right_sidebar_menu-link')));
-  } else {
-    $output .= '<h3>' . t('My Requests') . '</h3>' . t('<p class="right_sidebar_menu-no_result">You haven\'t created any offer yet.</p>') . l(t('+ Create a new  request'),'node/add/request', array('attributes' => array('class' => 'right_sidebar_menu-link')));
+  $output = '';
+
+  if (isset($items['offer']) && count($items['offer']) > 5) {
+    $output .= '<h3>' . t('My Offers') . '</h3>';
+    $output .= theme('item_list', array('items' => $items['offer']));
+    $output .= '<div>' .  l(t('more...'),'directory', array('attributes' => array('class' => 'right_sidebar_menu-more'))) . '</div>';
+    $output .= l('<span class="icon-plus"></span>' . t('Create a new offer'),'node/add/offer', array('html' => TRUE, 'attributes' => array('class' => array('right_sidebar_menu-link'))));
+  }
+  elseif (isset($items['offer']) && !empty($items['offer'])) {
+    $output .= '<h3>' . t('My Offers') . '</h3>';
+    $output .= theme('item_list', array('items' => $items['offer']));
+    $output .= l('<span class="icon-plus"></span>' . t('Create a new offer'),'node/add/offer', array('html' => TRUE, 'attributes' => array('class' => array('right_sidebar_menu-link'))));
+  }
+  else {
+
+    $output .= '<h3>' . t('My Offers') . '</h3>';
+    $output .= '<p class="right_sidebar_menu-no_result">' . t('You haven\'t created any offer yet.') . ' </p>';
+    $output .= l('<span class="icon-plus"></span>' . t('Create a new offer'),'node/add/offer', array('html' => TRUE, 'attributes' => array('class' => array('right_sidebar_menu-link'))));
   }
 
 
-  if (!empty($items['request'])) {
-    $output .= '<h3>' . t('My Requests') . '</h3>' . theme('item_list', array('items' => $items['request'])) . l(t('+ Create a new  request'),'node/add/request', array('attributes' => array('class' => 'right_sidebar_menu-link')));
-  } else {
-    $output .= '<h3>' . t('My Requests') . '</h3>' . t('<p class="right_sidebar_menu-no_result">You haven\'t created any request yet.</p>') . l(t('+ Create a new  request'),'node/add/request', array('attributes' => array('class' => 'right_sidebar_menu-link')));
+  if (isset($items['request']) && count($items['request']) > 5) {
+    $output .= '<h3>' . t('My Requests') . '</h3>';
+    $output .= theme('item_list', array('items' => $items['offer']));
+    $output .= '<div>' .  l(t('more...'),'directory', array('attributes' => array('class' => 'right_sidebar_menu-more'))) . '</div>';
+    $output .= l('<span class="icon-plus"></span>' . t('Create a new offer'),'node/add/request', array('html' => TRUE, 'attributes' => array('class' => array('right_sidebar_menu-link'))));
   }
+  elseif (isset($items['request']) && !empty($items['request'])) {
+    $output .= '<h3>' . t('My Requests') . '</h3>';
+    $output .= theme('item_list', array('items' => $items['request']));
+    $output .= l('<span class="icon-plus"></span>' . t('Create a new request'),'node/add/request', array('html' => TRUE, 'attributes' => array('class' => array('right_sidebar_menu-link'))));
+  }
+  else {
 
-  if (!empty($items['community'])) {
-    $output .= '<h3>' . t('My Groups') . '</h3>' . theme('item_list', array('items' => $items['community'])) . l(t('+ Create a new group'),'node/add/community', array('attributes' => array('class' => 'right_sidebar_menu-link')));
-  } else {
-    $output .= '<h3>' . t('My Requests') . '</h3>' . t('<p class="right_sidebar_menu-no_result">You haven\'t created any community yet.</p>') . l(t('+ Create a new  request'),'node/add/request', array('attributes' => array('class' => 'right_sidebar_menu-link')));
+    $output .= '<h3>' . t('My Requests') . '</h3>';
+    $output .= '<p class="right_sidebar_menu-no_result">' . t('You haven\'t created any request yet.') . ' </p>';
+    $output .= l('<span class="icon-plus"></span>' . t('Create a new request'),'node/add/request', array('html' => TRUE, 'attributes' => array('class' => array('right_sidebar_menu-link'))));
   }
 
 
