@@ -307,18 +307,23 @@ body.not-logged-in #navbar .logo {
 .pane-menu-space-menu .dropdown .dropdown-toggle:hover {
   background-color: #f9ab17;
 }
-.pane-menu-space-menu .dropdown-submenu {
-  font-size: 16px;
-}
 .pane-menu-space-menu .dropdown-submenu a {
-  font-size: 14px;
+  font-size: 13px;
 }
 .pane-menu-space-menu .dropdown-menu a {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .navbar .nav li.dropdown.open > .dropdown-toggle {
   background-color: #f9ab17 !important;
+}
+
+.navbar .nav li.dropdown.close > .dropdown-toggle {
+  background-color: #f9ab17 !important;
+}
+
+.navbar .nav .dropdown-toggle .caret {
+  margin-top: 0px;
 }
 
 form .control-group a {

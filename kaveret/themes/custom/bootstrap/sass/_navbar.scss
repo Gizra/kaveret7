@@ -149,18 +149,33 @@
   }
 
   .dropdown-submenu {
-    font-size: 16px;
+
     a {
-      font-size: 14px;
+      font-size: 13px;
     }
   }
 
   .dropdown-menu {
     a {
-      font-size: 14px;
+      font-size: 13px;
     }
   }
 }
 .navbar .nav li.dropdown.open > .dropdown-toggle {
   background-color: #f9ab17 !important;
+}
+
+.navbar .nav li.dropdown.close > .dropdown-toggle {
+  background-color: #f9ab17 !important;
+}
+
+.navbar {
+  .nav {
+    .dropdown-toggle {
+      .caret {
+        margin-top: 0px;
+      }
+    }
+  }
+
 }
