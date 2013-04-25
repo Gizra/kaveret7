@@ -45,28 +45,6 @@ function kaveret_offer_default_panels_mini() {
     $pane = new stdClass();
     $pane->pid = 'new-1';
     $pane->panel = 'middle';
-    $pane->type = 'views_panes';
-    $pane->subtype = 'my_content-panel_pane_my_content';
-    $pane->shown = FALSE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'context' => array(
-        0 => 'context_user_1',
-      ),
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-1'] = $pane;
-    $display->panels['middle'][0] = 'new-1';
-    $pane = new stdClass();
-    $pane->pid = 'new-2';
-    $pane->panel = 'middle';
     $pane->type = 'right_sidebar_menu';
     $pane->subtype = 'right_sidebar_menu';
     $pane->shown = TRUE;
@@ -81,10 +59,10 @@ function kaveret_offer_default_panels_mini() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-2'] = $pane;
-    $display->panels['middle'][1] = 'new-2';
+    $display->content['new-1'] = $pane;
+    $display->panels['middle'][0] = 'new-1';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $mini->display = $display;
