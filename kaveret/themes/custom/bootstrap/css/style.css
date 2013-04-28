@@ -292,14 +292,6 @@ body.not-logged-in #navbar .logo {
   margin-bottom: 15px;
 }
 
-.pane-menu-space-menu .dropdown .dropdown-toggle {
-  margin-left: 10px;
-  background-color: #f9ab17;
-  padding: 5px;
-  color: white;
-  font-weight: bold;
-  text-transform: none;
-}
 .pane-menu-space-menu .dropdown .caret {
   display: block;
   margin: 0 auto;
@@ -318,12 +310,27 @@ body.not-logged-in #navbar .logo {
   background-color: #f9ab17 !important;
 }
 
-.navbar .nav li.dropdown.close > .dropdown-toggle {
-  background-color: #f9ab17 !important;
-}
-
 .navbar .nav .dropdown-toggle .caret {
   margin-top: 0px;
+}
+
+.pane-menu-space-menu .pane-content .nav .dropdown-toggle {
+  margin-left: 10px;
+  background-color: #f9ab17;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  text-transform: none;
+}
+
+.pane-menu-space-menu .pane-content .dropdown-submenu .dropdown-toggle {
+  margin-left: 10px;
+  background-color: transparent;
+  background: none;
+  padding: 5px;
+  color: #8D8D8D;
+  font-weight: bold;
+  text-transform: none;
 }
 
 form .control-group a {
